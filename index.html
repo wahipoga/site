@@ -53,7 +53,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* Botão de idioma simplificado */
+        /* Botão de idioma */
         .language-switcher {
             display: flex;
             align-items: center;
@@ -75,7 +75,6 @@
             align-items: center;
             gap: 6px;
             white-space: nowrap;
-            text-decoration: none;
         }
 
         .language-btn:hover {
@@ -87,6 +86,49 @@
 
         .language-btn i {
             font-size: 0.9rem;
+        }
+
+        .language-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: rgba(10, 10, 10, 0.98);
+            min-width: 150px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            border: 1px solid #f01b85;
+            border-radius: 10px;
+            z-index: 1002;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(240, 27, 133, 0.1);
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f01b85;
+            color: #000;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content.show {
+            display: block;
         }
 
         .nav-menu {
@@ -204,6 +246,7 @@
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
                 max-height: calc(100vh - 70px);
                 overflow-y: auto;
+                z-index: 1000;
             }
 
             .nav-menu.active {
@@ -751,13 +794,53 @@
             }
         }
 
-        /* Classes para alternar entre idiomas */
-        .portuguese-only {
+        /* === SISTEMA DE TRADUÇÃO === */
+        /* Elementos em português são visíveis por padrão */
+        .lang-pt {
             display: block;
         }
-
-        .english-only {
+        
+        .lang-en {
             display: none;
+        }
+        
+        /* Quando o body tem a classe 'english', mostramos inglês e escondemos português */
+        body.english .lang-pt {
+            display: none;
+        }
+        
+        body.english .lang-en {
+            display: block;
+        }
+        
+        /* Para elementos que precisam de display flex */
+        .social-btn.lang-pt {
+            display: flex !important;
+        }
+        
+        .social-btn.lang-en {
+            display: none !important;
+        }
+        
+        body.english .social-btn.lang-pt {
+            display: none !important;
+        }
+        
+        body.english .social-btn.lang-en {
+            display: flex !important;
+        }
+        
+        /* Corrigir links duplicados da Wiki */
+        .wiki-link {
+            display: inline-block;
+        }
+        
+        body:not(.english) .wiki-link.lang-en {
+            display: none !important;
+        }
+        
+        body.english .wiki-link.lang-pt {
+            display: none !important;
         }
     </style>
 </head>
@@ -766,37 +849,53 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
-                <span class="logo-text">Laços Profanos</span>
+                <span class="logo-text lang-pt">Laços Profanos</span>
+                <span class="logo-text lang-en">Profane Bonds</span>
             </a>
             
-            <!-- Botão de seleção de idioma SIMPLIFICADO -->
+            <!-- Botão de seleção de idioma -->
             <div class="language-switcher">
-                <a href="https://lacosprofanos.com.br/en" class="language-btn" target="_self">
-                    <i class="fas fa-globe"></i>
-                    <span>English Version</span>
-                </a>
+                <div class="language-dropdown" id="languageDropdown">
+                    <button class="language-btn" id="languageBtn">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">Português</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="#" class="language-option" data-lang="pt">Português</a>
+                        <a href="#" class="language-option" data-lang="en">English</a>
+                    </div>
+                </div>
             </div>
             
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="navMenu">
                 <li class="nav-item">
                     <a href="https://lacosprofanos.com.br/wallpapers&icons" target="_blank">
-                        <i class="fas fa-image"></i> Wallpapers & Icons
+                        <i class="fas fa-image"></i> 
+                        <span class="lang-pt">Wallpapers & Icons</span>
+                        <span class="lang-en">Wallpapers & Icons</span>
                     </a>
                 </li>
                 <li class="nav-item">
+                    <!-- Blog é o mesmo em ambos os idiomas -->
                     <a href="https://lacosprofanos.blogspot.com/" target="_blank">
                         <i class="fas fa-blog"></i> Blog
                     </a>
                 </li>
                 <li class="nav-item">
-                    <!-- Link da Wiki em Português -->
-                    <a href="https://lacosprofanos.fandom.com/pt-br/" target="_blank" class="wiki-link">
+                    <!-- ÚNICO link da Wiki que alterna entre idiomas -->
+                    <a href="https://lacosprofanos.fandom.com/pt-br/" target="_blank" class="wiki-link lang-pt">
+                        <i class="fas fa-book"></i> Wiki
+                    </a>
+                    <a href="https://profanebonds.fandom.com/wiki/" target="_blank" class="wiki-link lang-en">
                         <i class="fas fa-book"></i> Wiki
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="https://lacosprofanos.com.br/tos" target="_blank">
-                        <i class="fas fa-file-contract"></i> Termos de Serviço
+                        <i class="fas fa-file-contract"></i> 
+                        <span class="lang-pt">Termos de Serviço</span>
+                        <span class="lang-en">Terms of Service</span>
                     </a>
                 </li>
             </ul>
@@ -812,82 +911,118 @@
     <main class="container">
         <!-- Sobre Nós -->
         <section id="about" class="section">
-            <h2 class="section-title">Sobre Nós</h2>
+            <h2 class="section-title lang-pt">Sobre Nós</h2>
+            <h2 class="section-title lang-en">About Us</h2>
             <div class="about-text">
-                <p>
+                <p class="lang-pt">
                     <span class="highlight">Laços Profanos</span> é uma história fictícia que nasceu como a ideia de um mangá inspirado em obras populares da época. Com o tempo, essa primeira versão foi totalmente repensada, descartada e reconstruída — e assim o universo se expandiu até se tornar o que conhecemos hoje.
                 </p>
-                <p>
+                <p class="lang-en">
+                    <span class="highlight">Profane Bonds</span> is a fictional story that began as a manga idea inspired by popular works of the time. Over time, this first version was completely rethought, discarded, and rebuilt — and so the universe expanded into what we know today.
+                </p>
+                <p class="lang-pt">
                     Somos um projeto completamente independente, desenvolvido e mantido por apenas duas pessoas. Trabalhamos com dedicação para dar vida a esse universo, criar conteúdo de qualidade e compartilhar nossa visão com quem deseja conhecer mais sobre Laços Profanos.
+                </p>
+                <p class="lang-en">
+                    We are a completely independent project, developed and maintained by just two people. We work diligently to bring this universe to life, create quality content, and share our vision with those who want to learn more about Profane Bonds.
                 </p>
             </div>
         </section>
 
         <!-- Redes Sociais -->
         <section id="social" class="section">
-            <h2 class="section-title">Redes Sociais</h2>
+            <h2 class="section-title lang-pt">Redes Sociais</h2>
+            <h2 class="section-title lang-en">Social Media</h2>
             <div class="about-text">
-                <p>Conecte-se conosco através das nossas redes sociais:</p>
+                <p class="lang-pt">Conecte-se conosco através das nossas redes sociais:</p>
+                <p class="lang-en">Connect with us through our social media:</p>
             </div>
             <div class="social-buttons">
-                <a href="https://tipa.ai/lacosprofanos" target="_blank" class="social-btn">
+                <!-- Português apenas -->
+                <a href="https://tipa.ai/lacosprofanos" target="_blank" class="social-btn lang-pt">
                     <div class="social-icon"><i class="fas fa-robot"></i></div>
                     <div class="social-content"><h3>Tipa.ai</h3><p>Canal no Tipa.ai</p></div>
                 </a>
-                <a href="https://bit.ly/lacosprofanosZap" target="_blank" class="social-btn">
+                <a href="https://bit.ly/lacosprofanosZap" target="_blank" class="social-btn lang-pt">
                     <div class="social-icon"><i class="fab fa-whatsapp"></i></div>
                     <div class="social-content"><h3>WhatsApp</h3><p>Canal no WhatsApp</p></div>
                 </a>
                 <a href="https://discord.com/invite/u4sD2JyTuT" target="_blank" class="social-btn">
                     <div class="social-icon"><i class="fab fa-discord"></i></div>
-                    <div class="social-content"><h3>Discord</h3><p>Servidor no Discord</p></div>
+                    <div class="social-content">
+                        <h3 class="lang-pt">Discord</h3>
+                        <h3 class="lang-en">Discord</h3>
+                        <p class="lang-pt">Servidor no Discord</p>
+                        <p class="lang-en">Discord Server</p>
+                    </div>
                 </a>
-                <a href="https://www.instagram.com/lacosprofanos" target="_blank" class="social-btn">
+                <a href="https://www.instagram.com/lacosprofanos" target="_blank" class="social-btn lang-pt">
                     <div class="social-icon"><i class="fab fa-instagram"></i></div>
                     <div class="social-content"><h3>Instagram</h3><p>Perfil no Instagram</p></div>
                 </a>
-                <a href="https://x.com/lacosprofanos" target="_blank" class="social-btn">
+                <a href="https://x.com/lacosprofanos" target="_blank" class="social-btn lang-pt">
                     <div class="social-icon"><i class="fab fa-twitter"></i></div>
                     <div class="social-content"><h3>X (Twitter)</h3><p>Perfil no X (Twitter)</p></div>
                 </a>
                 <a href="https://www.youtube.com/@LaçosProfanos" target="_blank" class="social-btn">
                     <div class="social-icon"><i class="fab fa-youtube"></i></div>
-                    <div class="social-content"><h3>YouTube</h3><p>Canal no YouTube</p></div>
+                    <div class="social-content">
+                        <h3 class="lang-pt">YouTube</h3>
+                        <h3 class="lang-en">YouTube</h3>
+                        <p class="lang-pt">Canal no YouTube</p>
+                        <p class="lang-en">YouTube Channel</p>
+                    </div>
                 </a>
-                <a href="https://t.me/lacosprofanos" target="_blank" class="social-btn">
+                <a href="https://t.me/lacosprofanos" target="_blank" class="social-btn lang-pt">
                     <div class="social-icon"><i class="fab fa-telegram"></i></div>
                     <div class="social-content"><h3>Telegram</h3><p>Canal no Telegram</p></div>
                 </a>
-                <a href="https://www.reddit.com/r/lacosprofanos" target="_blank" class="social-btn">
+                <a href="https://www.reddit.com/r/lacosprofanos" target="_blank" class="social-btn lang-pt">
                     <div class="social-icon"><i class="fab fa-reddit"></i></div>
                     <div class="social-content"><h3>Reddit</h3><p>Comunidade no Reddit</p></div>
+                </a>
+                
+                <!-- Inglês apenas -->
+                <a href="https://ko-fi.com/profanebonds" target="_blank" class="social-btn lang-en">
+                    <div class="social-icon"><i class="fas fa-mug-hot"></i></div>
+                    <div class="social-content"><h3>Ko-fi</h3><p>Support us on Ko-fi</p></div>
                 </a>
             </div>
         </section>
 
         <!-- A Terra em Laços Profanos -->
         <section id="earth" class="section">
-            <h2 class="section-title">A Terra em Laços Profanos</h2>
+            <h2 class="section-title lang-pt">A Terra em Laços Profanos</h2>
+            <h2 class="section-title lang-en">Earth in Profane Bonds</h2>
             <div class="about-text">
-                <p>
+                <p class="lang-pt">
                     No universo de Laços Profanos, o planeta Terra não é como o nosso. Ele é dividido em apenas três continentes, cada um com suas próprias características, culturas e histórias:
+                </p>
+                <p class="lang-en">
+                    In the Profane Bonds universe, planet Earth is not like ours. It is divided into only three continents, each with its own characteristics, cultures, and histories:
                 </p>
             </div>
             <div class="continents-container">
                 <div class="continents-image">
                     <img src="https://i.imgur.com/jrrLcpW.png" alt="Os três continentes de Laços Profanos: Kelster, Molton e Clifton">
                 </div>
-                <p class="continents-description">
+                <p class="continents-description lang-pt">
                     ❄️ Kelster — o continente frio, marcado por climas rigorosos, paisagens geladas e povos acostumados à resistência.<br>
                     🍃 Molton — o continente intermediário, de equilíbrio entre frio e calor, diversidade natural e cultural.<br>
                     🔥 Clifton — o continente quente, repleto de calor intenso, vida vibrante e tradições moldadas pelo sol.
+                </p>
+                <p class="continents-description lang-en">
+                    ❄️ Kelster — the cold continent, marked by harsh climates, icy landscapes, and peoples accustomed to endurance.<br>
+                    🍃 Molton — the intermediate continent, balancing cold and heat, with natural and cultural diversity.<br>
+                    🔥 Clifton — the hot continent, full of intense heat, vibrant life, and traditions shaped by the sun.
                 </p>
             </div>
         </section>
 
         <!-- As Mentes por Trás -->
         <section id="creators" class="section">
-            <h2 class="section-title">As Mentes por Trás</h2>
+            <h2 class="section-title lang-pt">As Mentes por Trás</h2>
+            <h2 class="section-title lang-en">The Minds Behind</h2>
             <div class="creators-grid">
                 <!-- Wahi -->
                 <div class="creator-card">
@@ -895,17 +1030,27 @@
                         <img src="https://i.imgur.com/LOXjaKn.jpeg" alt="Eduarda Victoria - A Criadora">
                     </div>
                     <h3 class="creator-name">Eduarda Victoria</h3>
-                    <p class="creator-role">A Criadora</p>
-                    <p class="creator-desc">
+                    <p class="creator-role lang-pt">A Criadora</p>
+                    <p class="creator-role lang-en">The Creator</p>
+                    <p class="creator-desc lang-pt">
                         Mais conhecida pelos pseudônimos Wahipogo ou Wahi, é a mente criativa por trás do universo de Laços Profanos. Além de idealizar a obra, atua como roteirista, diretora criativa e gestora do projeto. Também é programadora, responsável pelo desenvolvimento e manutenção do site oficial da obra.
+                    </p>
+                    <p class="creator-desc lang-en">
+                        Better known by the pseudonyms Wahipogo or Wahi, she is the creative mind behind the Profane Bonds universe. In addition to conceptualizing the work, she acts as screenwriter, creative director, and project manager. She is also a programmer, responsible for developing and maintaining the official website.
                     </p>
                     <!-- Botões adicionais -->
                     <div class="creator-buttons">
-                        <a href="https://lacosprofanos.com.br/wahi" target="_blank" class="nav-btn">
+                        <a href="https://lacosprofanos.com.br/wahi" target="_blank" class="nav-btn lang-pt">
                             <i class="fas fa-share-alt"></i> Redes Sociais
                         </a>
-                        <a href="https://lacosprofanos.com.br/wahi/portfolio" target="_blank" class="nav-btn">
+                        <a href="https://lacosprofanos.com.br/wahi" target="_blank" class="nav-btn lang-en">
+                            <i class="fas fa-share-alt"></i> Social Media
+                        </a>
+                        <a href="https://lacosprofanos.com.br/wahi/portfolio" target="_blank" class="nav-btn lang-pt">
                             <i class="fas fa-folder-open"></i> Portfólio
+                        </a>
+                        <a href="https://lacosprofanos.com.br/wahi/portfolio" target="_blank" class="nav-btn lang-en">
+                            <i class="fas fa-folder-open"></i> Portfolio
                         </a>
                     </div>
                 </div>
@@ -916,58 +1061,167 @@
                         <img src="https://i.imgur.com/ByfmPFO.png" alt="Elisa Lana - A Artista">
                     </div>
                     <h3 class="creator-name">Elisa Lana</h3>
-                    <p class="creator-role">A Artista</p>
-                    <p class="creator-desc">
+                    <p class="creator-role lang-pt">A Artista</p>
+                    <p class="creator-role lang-en">The Artist</p>
+                    <p class="creator-desc lang-pt">
                         Elisa Lana é a segunda mente por trás de Laços Profanos. Enquanto Eduarda conduz a parte criativa e narrativa, Elisa é responsável pela ilustração e visualização das ideias, dando vida ao universo com seu talento artístico e transformando conceitos em imagens que encantam os fãs.
+                    </p>
+                    <p class="creator-desc lang-en">
+                        Elisa Lana is the second mind behind Profane Bonds. While Eduarda leads the creative and narrative aspects, Elisa is responsible for illustrating and visualizing ideas, bringing the universe to life with her artistic talent and transforming concepts into images that delight fans.
                     </p>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Script simplificado apenas para o menu hambúrguer -->
+    <!-- Sistema de Tradução e Navegação CORRIGIDO -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const hamburger = document.getElementById('hamburger');
-            const navMenu = document.querySelector('.nav-menu');
+            console.log('Página carregada - sistema pronto');
             
-            // Alternar menu hambúrguer
-            if (hamburger) {
-                hamburger.addEventListener('click', function() {
-                    hamburger.classList.toggle('active');
-                    navMenu.classList.toggle('active');
+            // ===== 1. CONTROLE DO DROPDOWN DE IDIOMA =====
+            const languageBtn = document.getElementById('languageBtn');
+            const dropdownContent = document.getElementById('dropdownContent');
+            
+            if (languageBtn && dropdownContent) {
+                // Abrir/fechar dropdown ao clicar no botão
+                languageBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (dropdownContent.style.display === 'block') {
+                        dropdownContent.style.display = 'none';
+                    } else {
+                        dropdownContent.style.display = 'block';
+                    }
+                });
+                
+                // Fechar dropdown ao clicar fora
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.language-dropdown')) {
+                        dropdownContent.style.display = 'none';
+                    }
+                });
+                
+                // Prevenir que o dropdown feche ao clicar dentro dele
+                dropdownContent.addEventListener('click', function(e) {
+                    e.stopPropagation();
                 });
             }
             
-            // Fechar menu ao clicar em um link (em telas pequenas)
-            document.querySelectorAll('.nav-item a').forEach(link => {
-                link.addEventListener('click', function() {
-                    if (window.innerWidth <= 768) {
-                        if (hamburger) hamburger.classList.remove('active');
-                        navMenu.classList.remove('active');
+            // ===== 2. SISTEMA DE TRADUÇÃO =====
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const lang = this.getAttribute('data-lang');
+                    console.log('Mudando idioma para:', lang);
+                    
+                    // Mudar a classe do body
+                    if (lang === 'en') {
+                        document.body.classList.add('english');
+                    } else {
+                        document.body.classList.remove('english');
                     }
+                    
+                    // Atualizar texto do botão
+                    const currentLangElement = document.getElementById('current-language');
+                    if (currentLangElement) {
+                        currentLangElement.textContent = lang === 'en' ? 'English' : 'Português';
+                    }
+                    
+                    // Atualizar título da página
+                    document.title = lang === 'en' ? 'Profane Bonds' : 'Laços Profanos';
+                    
+                    // Salvar preferência
+                    localStorage.setItem('preferred-language', lang);
+                    
+                    // Fechar dropdown
+                    if (dropdownContent) {
+                        dropdownContent.style.display = 'none';
+                    }
+                    
+                    console.log('Idioma alterado. Body tem classe english?', document.body.classList.contains('english'));
                 });
             });
             
-            // Fechar menu ao clicar fora (em telas pequenas)
-            document.addEventListener('click', function(event) {
-                const isClickInsideNav = navMenu.contains(event.target) || 
-                                       (hamburger && hamburger.contains(event.target));
+            // ===== 3. MENU HAMBÚRGUER =====
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (hamburger && navMenu) {
+                console.log('Menu hambúrguer encontrado');
                 
-                if (window.innerWidth <= 768 && 
-                    navMenu.classList.contains('active') && 
-                    !isClickInsideNav) {
-                    if (hamburger) hamburger.classList.remove('active');
+                hamburger.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    console.log('Hambúrguer clicado');
+                    
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    
+                    console.log('Menu active?', navMenu.classList.contains('active'));
+                });
+                
+                // Fechar menu ao clicar em links (mobile)
+                document.querySelectorAll('.nav-item a').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        if (window.innerWidth <= 768) {
+                            hamburger.classList.remove('active');
+                            navMenu.classList.remove('active');
+                        }
+                    });
+                });
+                
+                // Fechar menu ao clicar fora (mobile)
+                document.addEventListener('click', function(event) {
+                    if (window.innerWidth <= 768 && 
+                        navMenu.classList.contains('active') && 
+                        !navMenu.contains(event.target) && 
+                        !hamburger.contains(event.target)) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Fechar menu ao redimensionar a tela
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && navMenu) {
+                    hamburger.classList.remove('active');
                     navMenu.classList.remove('active');
                 }
             });
             
-            // Fechar menu ao redimensionar para tamanho grande
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768) {
-                    if (hamburger) hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
+            // ===== 4. INICIALIZAR IDIOMA SALVO =====
+            function initializeLanguage() {
+                const savedLang = localStorage.getItem('preferred-language');
+                const browserLang = navigator.language.startsWith('en') ? 'en' : 'pt';
+                const lang = savedLang || browserLang || 'pt';
+                
+                console.log('Inicializando com idioma:', lang);
+                
+                // Aplicar idioma
+                if (lang === 'en') {
+                    document.body.classList.add('english');
+                } else {
+                    document.body.classList.remove('english');
                 }
+                
+                // Atualizar texto do botão
+                const currentLangElement = document.getElementById('current-language');
+                if (currentLangElement) {
+                    currentLangElement.textContent = lang === 'en' ? 'English' : 'Português';
+                }
+                
+                // Atualizar título
+                document.title = lang === 'en' ? 'Profane Bonds' : 'Laços Profanos';
+            }
+            
+            // Inicializar idioma
+            initializeLanguage();
+            
+            // ===== 5. PREVENIR LINKS COM # =====
+            document.querySelectorAll('a[href="#"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                });
             });
         });
     </script>
