@@ -952,8 +952,14 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="dropdown-content" id="dropdownContent">
-                        <a href="#" class="language-option" data-lang="pt">Português</a>
-                        <a href="#" class="language-option" data-lang="en">English</a>
+                        <!-- Opção "Português" ativa (não clicável) -->
+                        <a href="#" class="language-option" data-lang="pt" style="background-color: rgba(240, 27, 133, 0.3); color: #ff4da6; pointer-events: none;">
+                            <i class="fas fa-check"></i> Português
+                        </a>
+                        <!-- Opção "English" leva para versão em inglês -->
+                        <a href="https://lacosprofanos.com.br/wallpapers&icons/en" class="language-option" data-lang="en">
+                            English
+                        </a>
                     </div>
                 </div>
             </div>
@@ -963,29 +969,25 @@
                     <a href="https://lacosprofanos.com.br" target="_blank" class="nav-link">
                         <i class="fas fa-home"></i> 
                         <span class="portuguese-only">Site Principal</span>
-                        <span class="english-only">Main Site</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="https://lacosprofanos.blogspot.com/" target="_blank" class="nav-link">
                         <i class="fas fa-blog"></i> 
                         <span class="portuguese-only">Blog</span>
-                        <span class="english-only">Blog</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <!-- Link da Wiki ÚNICO com href dinâmico -->
+                    <!-- Link da Wiki em português -->
                     <a href="https://lacosprofanos.fandom.com/pt-br/" target="_blank" class="nav-link wiki-link" id="wikiLink">
                         <i class="fas fa-book"></i> 
                         <span class="wiki-link-text portuguese-only">Wiki</span>
-                        <span class="wiki-link-text english-only">Wiki</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="https://lacosprofanos.com.br/tos/" target="_blank" class="nav-link">
                         <i class="fas fa-file-contract"></i> 
                         <span class="portuguese-only">Termos de Serviço</span>
-                        <span class="english-only">Terms of Service</span>
                     </a>
                 </li>
             </ul>
@@ -1016,13 +1018,11 @@
             <div class="modal-footer">
                 <button class="download-btn" id="modalDownloadBtn">
                     <i class="fas fa-download"></i> 
-                    <span class="portuguese-only">Baixar Imagem</span>
-                    <span class="english-only">Download Image</span>
+                    <span>Baixar Imagem</span>
                 </button>
                 <button class="preview-btn" id="closeModalBtn">
                     <i class="fas fa-times"></i> 
-                    <span class="portuguese-only">Fechar</span>
-                    <span class="english-only">Close</span>
+                    <span>Fechar</span>
                 </button>
             </div>
         </div>
@@ -1037,7 +1037,6 @@
                 <span class="english-only">Download exclusive wallpapers and icons from the</span> 
                 <span class="highlight" id="site-name">Laços Profanos</span>. 
                 <span class="portuguese-only">Todos os arquivos estão disponíveis para download gratuito.</span>
-                <span class="english-only">All files are available for free download.</span>
             </p>
         </header>
 
@@ -1045,26 +1044,22 @@
         <section class="filters-section">
             <h2 class="filters-title">
                 <i class="fas fa-filter"></i> 
-                <span class="portuguese-only">Filtros</span>
-                <span class="english-only">Filters</span>
+                <span>Filtros</span>
             </h2>
             
             <div class="filters-container">
                 <div class="filter-buttons">
                     <button class="filter-btn active" data-filter="all">
                         <i class="fas fa-layer-group"></i> 
-                        <span class="portuguese-only">Todos</span>
-                        <span class="english-only">All</span>
+                        <span>Todos</span>
                     </button>
                     <button class="filter-btn" data-filter="icon">
                         <i class="fas fa-user-circle"></i> 
-                        <span class="portuguese-only">Icons</span>
-                        <span class="english-only">Icons</span>
+                        <span>Icons</span>
                     </button>
                     <button class="filter-btn" data-filter="wallpaper">
                         <i class="fas fa-image"></i> 
-                        <span class="portuguese-only">Wallpapers</span>
-                        <span class="english-only">Wallpapers</span>
+                        <span>Wallpapers</span>
                     </button>
                 </div>
                 
@@ -1075,11 +1070,9 @@
             </div>
             
             <div class="results-info" id="resultsInfo">
-                <span class="portuguese-only">Mostrando</span>
-                <span class="english-only">Showing</span>
+                <span>Mostrando</span>
                 <span id="resultsCount">5</span>
-                <span class="portuguese-only">de 5 itens</span>
-                <span class="english-only">of 5 items</span>
+                <span>de 5 itens</span>
             </div>
         </section>
 
@@ -1092,52 +1085,16 @@
         <div class="no-results" id="noResultsMessage" style="display: none;">
             <i class="fas fa-search"></i>
             <h3>
-                <span class="portuguese-only">Nenhum item encontrado</span>
-                <span class="english-only">No items found</span>
+                <span>Nenhum item encontrado</span>
             </h3>
             <p>
-                <span class="portuguese-only">Tente usar outros termos de busca ou selecione um filtro diferente.</span>
-                <span class="english-only">Try using other search terms or select a different filter.</span>
+                <span>Tente usar outros termos de busca ou selecione um filtro diferente.</span>
             </p>
         </div>
     </main>
 
     <script>
-        // Traduções embutidas (fallback)
-        const fallbackTranslations = {
-            'pt': {
-                'title': 'Wallpapers & Icons - Laços Profanos',
-                'current-language': 'Português',
-                'siteTitle': 'Laços Profanos',
-                'pageTitle': 'Wallpapers & Icons',
-                'siteName': 'Laços Profanos',
-                'searchPlaceholder': 'Buscar por nome...',
-                'cardView': 'Visualizar',
-                'cardDownload': 'Baixar',
-                'iconText': 'Icon',
-                'wallpaperText': 'Wallpaper',
-                'modalTitle': 'Visualização',
-                'modalDownload': 'Baixar Imagem',
-                'modalClose': 'Fechar'
-            },
-            'en': {
-                'title': 'Wallpapers & Icons - Profane Bonds',
-                'current-language': 'English',
-                'siteTitle': 'Profane Bonds',
-                'pageTitle': 'Wallpapers & Icons',
-                'siteName': 'Profane Bonds',
-                'searchPlaceholder': 'Search by name...',
-                'cardView': 'Preview',
-                'cardDownload': 'Download',
-                'iconText': 'Icon',
-                'wallpaperText': 'Wallpaper',
-                'modalTitle': 'Preview',
-                'modalDownload': 'Download Image',
-                'modalClose': 'Close'
-            }
-        };
-
-        // Dados dos wallpapers e icons COM DESCRIÇÕES TRADUZIDAS
+        // Dados dos wallpapers e icons (apenas em português)
         const galleryItems = [
             {
                 id: 1,
@@ -1147,10 +1104,7 @@
                 previewImage: "https://i.imgur.com/WVrHpaB.jpeg",
                 size: "136 KB",
                 dimensions: "1000×1000",
-                description: {
-                    pt: "Icon do personagem Kaleb",
-                    en: "Icon of character Kaleb"
-                }
+                description: "Icon do personagem Kaleb"
             },
             {
                 id: 2,
@@ -1160,10 +1114,7 @@
                 previewImage: "https://i.imgur.com/IHCgQPS.png",
                 size: "829 KB",
                 dimensions: "1280×720",
-                description: {
-                    pt: "Wallpaper do Último Anjo",
-                    en: "Wallpaper of The Last Angel"
-                }
+                description: "Wallpaper do Último Anjo"
             },
             {
                 id: 3,
@@ -1173,10 +1124,7 @@
                 previewImage: "https://i.imgur.com/RA2LetQ.png",
                 size: "430 KB",
                 dimensions: "1280×720",
-                description: {
-                    pt: "Wallpaper da batalha Enaya vs Hamiah",
-                    en: "Wallpaper of the battle Enaya vs Hamiah"
-                }
+                description: "Wallpaper da batalha Enaya vs Hamiah"
             },
             {
                 id: 4,
@@ -1186,10 +1134,7 @@
                 previewImage: "https://i.imgur.com/Py44HxM.png",
                 size: "171 KB",
                 dimensions: "768×768",
-                description: {
-                    pt: "Icon da criadora Wahi",
-                    en: "Icon of creator Wahi"
-                }
+                description: "Icon da criadora Wahi"
             },
             {
                 id: 5,
@@ -1199,163 +1144,9 @@
                 previewImage: "https://i.imgur.com/jI5RKKU.png",
                 size: "228 KB",
                 dimensions: "1280×1280",
-                description: {
-                    pt: "Icon do personagem Noxum",
-                    en: "Icon of character Noxum"
-                }
+                description: "Icon do personagem Noxum"
             }
         ];
-
-        // Variável global para o idioma atual
-        let currentLanguage = 'pt';
-
-        // Função para carregar traduções do arquivo JSON externo
-        async function loadTranslations(lang) {
-            try {
-                const response = await fetch('main.json');
-                if (!response.ok) {
-                    throw new Error('Arquivo JSON não encontrado');
-                }
-                const data = await response.json();
-                
-                if (!data[lang]) {
-                    console.warn(`Tradução para ${lang} não encontrada no JSON, usando fallback`);
-                    return fallbackTranslations[lang] || fallbackTranslations['pt'];
-                }
-                
-                return data[lang];
-            } catch (error) {
-                console.log('Usando traduções embutidas:', error.message);
-                return fallbackTranslations[lang] || fallbackTranslations['pt'];
-            }
-        }
-
-        // Função para atualizar o link da Wiki
-        function updateWikiLink() {
-            const wikiLink = document.getElementById('wikiLink');
-            if (wikiLink) {
-                if (currentLanguage === 'en') {
-                    wikiLink.href = 'https://profanebonds.fandom.com/wiki/';
-                } else {
-                    wikiLink.href = 'https://lacosprofanos.fandom.com/pt-br/';
-                }
-            }
-        }
-
-        // Função para aplicar traduções
-        async function applyTranslations(lang) {
-            currentLanguage = lang;
-            const trans = await loadTranslations(lang);
-            
-            // Atualizar a classe do body para controle CSS
-            document.body.classList.toggle('english', lang === 'en');
-            
-            // Atualizar título da página
-            document.title = trans['title'];
-            
-            // Atualizar nome do site
-            const siteTitle = document.getElementById('site-title');
-            if (siteTitle) siteTitle.textContent = trans['siteTitle'];
-            
-            const siteName = document.getElementById('site-name');
-            if (siteName) siteName.textContent = trans['siteName'];
-            
-            // Atualizar texto do botão de idioma
-            const currentLangElement = document.getElementById('current-language');
-            if (currentLangElement) {
-                currentLangElement.textContent = trans['current-language'];
-            }
-            
-            // Atualizar placeholder da busca
-            const searchInput = document.getElementById('searchInput');
-            if (searchInput) {
-                searchInput.placeholder = trans['searchPlaceholder'];
-            }
-            
-            // Atualizar título da página
-            const pageTitle = document.getElementById('pageTitle');
-            if (pageTitle) pageTitle.textContent = trans['pageTitle'];
-            
-            // Atualizar link da Wiki
-            updateWikiLink();
-            
-            // Salvar preferência de idioma
-            localStorage.setItem('preferred-language', lang);
-            
-            // Atualizar parâmetro na URL
-            updateUrlLanguageParam(lang);
-            
-            // Renderizar galeria novamente para atualizar textos dos cards
-            renderGallery(getFilteredItems());
-        }
-
-        // Função para atualizar parâmetro de idioma na URL
-        function updateUrlLanguageParam(lang) {
-            const url = new URL(window.location.href);
-            url.searchParams.set('lang', lang);
-            window.history.replaceState({}, '', url.toString());
-        }
-
-        // Função para obter o idioma da URL
-        function getLanguageFromUrl() {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('lang');
-        }
-
-        // Função para mudar o idioma
-        async function changeLanguage(lang) {
-            await applyTranslations(lang);
-            
-            // Fechar o dropdown
-            const dropdownContent = document.getElementById('dropdownContent');
-            if (dropdownContent) {
-                dropdownContent.style.display = 'none';
-            }
-        }
-
-        // Função para inicializar o sistema de idioma
-        async function initializeLanguageSystem() {
-            const urlLang = getLanguageFromUrl();
-            const savedLang = localStorage.getItem('preferred-language');
-            const browserLang = navigator.language.startsWith('en') ? 'en' : 'pt';
-            
-            const lang = urlLang || savedLang || browserLang;
-            
-            await applyTranslations(lang);
-            
-            setupLanguageButtons();
-        }
-
-        // Configurar eventos para os botões de idioma
-        function setupLanguageButtons() {
-            const languageBtn = document.getElementById('languageBtn');
-            const dropdownContent = document.getElementById('dropdownContent');
-            
-            if (languageBtn && dropdownContent) {
-                // Abrir/fechar dropdown ao clicar no botão
-                languageBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    dropdownContent.style.display = 
-                        dropdownContent.style.display === 'block' ? 'none' : 'block';
-                });
-                
-                // Fechar dropdown ao clicar fora
-                document.addEventListener('click', function(e) {
-                    if (!e.target.closest('.language-dropdown')) {
-                        dropdownContent.style.display = 'none';
-                    }
-                });
-            }
-            
-            // Configurar opções de idioma
-            document.querySelectorAll('.language-option').forEach(option => {
-                option.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const lang = this.getAttribute('data-lang');
-                    changeLanguage(lang);
-                });
-            });
-        }
 
         // Função para normalizar texto (remover acentos e caracteres especiais)
         function normalizeText(text) {
@@ -1393,7 +1184,7 @@
             if (searchTerm) {
                 filteredItems = filteredItems.filter(item => {
                     const itemName = normalizeText(item.name);
-                    const itemDescription = normalizeText(item.description[currentLanguage] || item.description.pt);
+                    const itemDescription = normalizeText(item.description);
                     return itemName.includes(searchTerm) || itemDescription.includes(searchTerm);
                 });
             }
@@ -1418,12 +1209,6 @@
             noResultsMessage.style.display = 'none';
             if (resultsCount) resultsCount.textContent = items.length;
             
-            // Obter textos de tradução
-            const viewText = currentLanguage === 'en' ? 'Preview' : 'Visualizar';
-            const downloadText = currentLanguage === 'en' ? 'Download' : 'Baixar';
-            const iconText = currentLanguage === 'en' ? 'Icon' : 'Icon';
-            const wallpaperText = currentLanguage === 'en' ? 'Wallpaper' : 'Wallpaper';
-            
             items.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'image-card';
@@ -1431,10 +1216,9 @@
                 card.dataset.name = item.name.toLowerCase();
                 
                 const typeIcon = item.type === 'icon' ? 'fa-user-circle' : 'fa-image';
-                const typeText = item.type === 'icon' ? iconText : wallpaperText;
+                const typeText = item.type === 'icon' ? 'Icon' : 'Wallpaper';
                 const fileExtension = item.imagePath.split('.').pop();
                 const downloadFilename = `${item.name}.${fileExtension}`;
-                const itemDescription = item.description[currentLanguage] || item.description.pt;
                 
                 card.innerHTML = `
                     <div class="card-header">
@@ -1447,10 +1231,10 @@
                         </div>
                     </div>
                     <div class="card-preview">
-                        <img src="${item.previewImage}" alt="${itemDescription}" loading="lazy">
+                        <img src="${item.previewImage}" alt="${item.description}" loading="lazy">
                         <div class="card-overlay">
                             <button class="preview-btn" data-id="${item.id}">
-                                <i class="fas fa-search-plus"></i> ${viewText}
+                                <i class="fas fa-search-plus"></i> Visualizar
                             </button>
                         </div>
                     </div>
@@ -1461,7 +1245,7 @@
                             </div>
                         </div>
                         <button class="download-btn" data-url="${item.imagePath}" data-filename="${downloadFilename}">
-                            <i class="fas fa-download"></i> ${downloadText}
+                            <i class="fas fa-download"></i> Baixar
                         </button>
                     </div>
                 `;
@@ -1498,7 +1282,7 @@
             const modalDownloadBtn = document.getElementById('modalDownloadBtn');
             
             modalImage.src = item.previewImage;
-            modalImage.alt = item.description[currentLanguage] || item.description.pt;
+            modalImage.alt = item.description;
             modalImageTitle.textContent = item.name;
             
             const fileExtension = item.imagePath.split('.').pop();
@@ -1568,13 +1352,40 @@
             });
         }
 
+        // Configurar dropdown de idioma
+        function setupLanguageDropdown() {
+            const languageBtn = document.getElementById('languageBtn');
+            const dropdownContent = document.getElementById('dropdownContent');
+            
+            if (languageBtn && dropdownContent) {
+                // Abrir/fechar dropdown ao clicar no botão
+                languageBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    dropdownContent.style.display = 
+                        dropdownContent.style.display === 'block' ? 'none' : 'block';
+                });
+                
+                // Fechar dropdown ao clicar fora
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.language-dropdown')) {
+                        dropdownContent.style.display = 'none';
+                    }
+                });
+                
+                // Prevenir que o dropdown feche ao clicar dentro dele
+                dropdownContent.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+        }
+
         // Inicialização
         document.addEventListener('DOMContentLoaded', function() {
-            // Inicializar sistema de idioma
-            initializeLanguageSystem();
-            
             // Configurar menu hambúrguer
             setupHamburgerMenu();
+            
+            // Configurar dropdown de idioma
+            setupLanguageDropdown();
             
             // Configurar filtros
             document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -1637,6 +1448,9 @@
                     }
                 });
             });
+            
+            // Renderizar galeria inicial
+            renderGallery(galleryItems);
         });
     </script>
 </body>
