@@ -1,9 +1,10 @@
 # Termos de Serviço – Laços Profanos
-Atualizações dos Termos
+**Atualizações dos Termos:**
 - Estes termos podem ser **atualizados a qualquer momento** por Laços Profanos. É de **responsabilidade do usuário** manter-se informado sobre a versão mais recente e cumprir os termos vigentes.  
 - **Última atualização:** 22/01/2026  
 - Em caso de divergências ou erros em traduções para outros idiomas, **a versão em português prevalecerá**.
-## Aceitação dos Termos
+- 
+**Aceitação dos Termos:**
 Ao usar qualquer conteúdo da marca Laços Profanos — incluindo artes, personagens, fanarts ou textos — você concorda automaticamente com estes Termos de Serviço.
 ---
 ## 1. Direitos sobre Conteúdos do Site
@@ -23,7 +24,7 @@ Ao usar qualquer conteúdo da marca Laços Profanos — incluindo artes, persona
    * Não podem ser apresentadas como oficiais ou atribuídas à Laços Profanos de forma enganosa.  
 2. **Recomendamos**, mas não exigimos, que os criadores enviem uma mensagem para **[contato@lacosprofanos.com.br](mailto:contato@lacosprofanos.com.br)** antes de monetizar projetos, para evitar conflitos com a marca.
 
-## Propriedade Intelectual
+**Propriedade Intelectual:**
 Todos os direitos de marca, personagens, histórias, artes e demais criações pertencem exclusivamente à Laços Profanos. Uso não autorizado para fins comerciais ou oficiais está proibido.
 ---
 ## 4. Conduta e Conteúdos
