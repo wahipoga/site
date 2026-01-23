@@ -11,11 +11,34 @@
 - Termos de serviço em português: [https://bit.ly/lptos-br](https://bit.ly/lptos-br)
 
 **Aceitação dos Termos:**
-Ao acessar, utilizar, baixar ou fazer referência a qualquer conteúdo associado à Laços Profanos, você concorda automaticamente com estes Termos de Serviço. Caso discorde, deve **cessar imediatamente** todo uso.
+- Ao acessar, utilizar, baixar ou fazer referência a qualquer conteúdo associado à Laços Profanos, você concorda automaticamente com estes Termos de Serviço. Caso discorde, deve **cessar imediatamente** todo uso.
 ---
 # Índice:
-- [1. Uso de Conteúdos]()
-  - 
+- [1. Uso de Conteúdos](https://github.com/wahipoga/site/blob/main/tos/pt.md#1-uso-de-conte%C3%BAdos-1)
+  - [1.1 Uso Pessoal (Permitido sem restrições)](https://github.com/wahipoga/site/blob/main/tos/pt.md#11-uso-pessoal-permitido-sem-restri%C3%A7%C3%B5es)
+  - [1.2 Uso Comercial (Permitido COM REGRAS)](https://github.com/wahipoga/site/blob/main/tos/pt.md#12-uso-comercial-permitido-com-regras)
+  - [1.3 Proibições Comerciais Absolutas](https://github.com/wahipoga/site/blob/main/tos/pt.md#13-proibi%C3%A7%C3%B5es-comerciais-absolutas)
+- [2. POLÍTICA SOBRE INTELIGÊNCIA ARTIFICIAL](https://github.com/wahipoga/site/blob/main/tos/pt.md#2-pol%C3%ADtica-sobre-intelig%C3%AAncia-artificial)
+  - [2.1 Posição da Marca](https://github.com/wahipoga/site/blob/main/tos/pt.md#21-posi%C3%A7%C3%A3o-da-marca)
+  - [2.2 Proibições Absolutas de IA](https://github.com/wahipoga/site/blob/main/tos/pt.md#22-proibi%C3%A7%C3%B5es-absolutas-de-ia)
+  - [2.3 Por Que Proibimos IA](https://github.com/wahipoga/site/blob/main/tos/pt.md#23-por-que-proibimos-ia)
+  - [2.4 Direitos Morais:](https://github.com/wahipoga/site/blob/main/tos/pt.md#24-direitos-morais)
+  - [2.5 Ferramentas Permitidas:](https://github.com/wahipoga/site/blob/main/tos/pt.md#25-ferramentas-permitidas)
+- [3. Criações de Fãs (Fanworks)](https://github.com/wahipoga/site/blob/main/tos/pt.md#3-cria%C3%A7%C3%B5es-de-f%C3%A3s-fanworks)
+  - [3.1 Monetização Permitida (APENAS HUMANA)](https://github.com/wahipoga/site/blob/main/tos/pt.md#31-monetiza%C3%A7%C3%A3o-permitida-apenas-humana)
+  - [3.2 Responsabilidade Total do Criador](https://github.com/wahipoga/site/blob/main/tos/pt.md#32-responsabilidade-total-do-criador)
+  - [3.3 Recomendação (NÃO obrigatória)](https://github.com/wahipoga/site/blob/main/tos/pt.md#33-recomenda%C3%A7%C3%A3o-n%C3%A3o-obrigat%C3%B3ria)
+- [4. Conteúdos PROIBIDOS e Exceções Narrativas](https://github.com/wahipoga/site/blob/main/tos/pt.md#4-conte%C3%BAdos-proibidos-e-exce%C3%A7%C3%B5es-narrativas)
+  - [4.1 Proibições Absolutas (Tolerância Zero)](https://github.com/wahipoga/site/blob/main/tos/pt.md#41-proibi%C3%A7%C3%B5es-absolutas-toler%C3%A2ncia-zero)
+  - [4.2 Exceção para Desenvolvimento de Personagem](https://github.com/wahipoga/site/blob/main/tos/pt.md#42-exce%C3%A7%C3%A3o-para-desenvolvimento-de-personagem)
+  - [4.3 Proibição na Exceção](https://github.com/wahipoga/site/blob/main/tos/pt.md#43-proibi%C3%A7%C3%A3o-na-exce%C3%A7%C3%A3o)
+- [5. Código do Site](https://github.com/wahipoga/site/blob/main/tos/pt.md#5-c%C3%B3digo-do-site)
+- [6. Consequências por Violação](https://github.com/wahipoga/site/blob/main/tos/pt.md#6-consequ%C3%AAncias-por-viola%C3%A7%C3%A3o)
+  - [6.1 Remoção Imediata](https://github.com/wahipoga/site/blob/main/tos/pt.md#61-remo%C3%A7%C3%A3o-imediata)
+  - [6.2 Ações Legais](https://github.com/wahipoga/site/blob/main/tos/pt.md#62-a%C3%A7%C3%B5es-legais)
+  - [6.3 Isenção de Responsabilidade](https://github.com/wahipoga/site/blob/main/tos/pt.md#63-isen%C3%A7%C3%A3o-de-responsabilidade)
+  - [6.4 Denúncia de Uso de IA:](
+- [7. Disposições Finais](https://github.com/wahipoga/site/blob/main/tos/pt.md#7-disposi%C3%A7%C3%B5es-finais)
 ---
 ## 1. Uso de Conteúdos
 ### 1.1 Uso Pessoal (Permitido sem restrições)
@@ -150,7 +173,7 @@ Laços Profanos **NÃO se responsabiliza** por:
 - Problemas legais dos seus projetos
 - Qualquer prejuízo relacionado
 
-**6.4 Denúncia de Uso de IA:**
+### 6.4 Denúncia de Uso de IA:
 - Qualquer pessoa pode denunciar suspeita de uso de IA para [contato@lacosprofanos.com.br](mailto:contato@lacosprofanos.com.br)
 - Denúncias devem incluir: URL, motivos da suspeita, evidências se possível, Investigaremos e tomaremos ação conforme a Seção 6.1
 
