@@ -832,13 +832,17 @@
                         <a href="#" class="language-option active" data-lang="en">
                             <i class="fas fa-check"></i> English
                         </a>
+                        <!-- Japanese option -->
+                        <a href="https://lacosprofanos.com.br/jp" class="language-option" data-lang="jp">
+                            日本語
+                        </a>
                     </div>
                 </div>
             </div>
             
             <ul class="nav-menu" id="navMenu">
                 <li class="nav-item">
-                    <a href="https://lacosprofanos.com.br/wallpapers&icons/en" target="_blank">
+                    <a href="https://lacosprofanos.com.br/wallpapers&icons/en">
                         <i class="fas fa-image"></i> Wallpapers & Icons
                     </a>
                 </li>
@@ -940,10 +944,10 @@
                     </p>
                     <!-- Additional buttons -->
                     <div class="creator-buttons">
-                        <a href="https://lacosprofanos.com.br/wahi" target="_blank" class="nav-btn">
+                        <a href="https://lacosprofanos.com.br/wahi" class="nav-btn">
                             <i class="fas fa-share-alt"></i> Social Media
                         </a>
-                        <a href="https://lacosprofanos.com.br/wahi/portfolio" target="_blank" class="nav-btn">
+                        <a href="https://lacosprofanos.com.br/wahi/portfolio" class="nav-btn">
                             <i class="fas fa-folder-open"></i> Portfolio
                         </a>
                     </div>
@@ -1049,6 +1053,18 @@
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                 });
+            });
+            
+            // ===== 4. DETECT AND FIX LINKS TO SAME DOMAIN =====
+            document.querySelectorAll('a').forEach(link => {
+                const href = link.getAttribute('href');
+                const target = link.getAttribute('target');
+                
+                // If link is to the same domain and has target="_blank", remove target
+                if (href && href.includes('lacosprofanos.com.br') && target === '_blank') {
+                    link.removeAttribute('target');
+                    console.log('Fixed link to open in same tab:', href);
+                }
             });
         });
     </script>
