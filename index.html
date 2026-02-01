@@ -828,9 +828,13 @@
                         <a href="#" class="language-option active" data-lang="pt">
                             <i class="fas fa-check"></i> Português
                         </a>
-                        <!-- Opção para Inglês (redireciona para outra página) -->
+                        <!-- Opção para Inglês -->
                         <a href="https://lacosprofanos.com.br/en" class="language-option" data-lang="en">
                             English
+                        </a>
+                        <!-- Opção para Japonês -->
+                        <a href="https://lacosprofanos.com.br/jp" class="language-option" data-lang="jp">
+                            日本語 (Japanese)
                         </a>
                     </div>
                 </div>
@@ -838,7 +842,7 @@
             
             <ul class="nav-menu" id="navMenu">
                 <li class="nav-item">
-                    <a href="https://lacosprofanos.com.br/wallpapers&icons" target="_blank">
+                    <a href="https://lacosprofanos.com.br/wallpapers&icons">
                         <i class="fas fa-image"></i> Wallpapers & Icons
                     </a>
                 </li>
@@ -959,7 +963,7 @@
                     </p>
                     <!-- Botões adicionais -->
                     <div class="creator-buttons">
-                        <a href="https://lacosprofanos.com.br/wahi" target="_blank" class="nav-btn">
+                        <a href="https://lacosprofanos.com.br/wahi" class="nav-btn">
                             <i class="fas fa-share-alt"></i> Redes Sociais
                         </a>
                         <a href="https://github.com/wahipoga/portfolio" target="_blank" class="nav-btn">
@@ -1068,6 +1072,18 @@
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                 });
+            });
+            
+            // ===== 4. DETECTAR E CORRIGIR LINKS PARA O MESMO DOMÍNIO =====
+            document.querySelectorAll('a').forEach(link => {
+                const href = link.getAttribute('href');
+                const target = link.getAttribute('target');
+                
+                // Se o link é para o mesmo domínio e tem target="_blank", remove o target
+                if (href && href.includes('lacosprofanos.com.br') && target === '_blank') {
+                    link.removeAttribute('target');
+                    console.log('Corrigido link para abrir na mesma aba:', href);
+                }
             });
         });
     </script>
