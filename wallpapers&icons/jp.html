@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>壁紙 & アイコン - 背徳の絆</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* === NAVIGATION STYLE === */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 20px;
+            border-bottom: 2px solid #f01b85;
+            box-shadow: 0 4px 20px rgba(240, 27, 133, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            color: #f01b85;
+            transform: translateY(-2px);
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        /* Language button */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-right: 20px;
+        }
+
+        .language-btn {
+            background: rgba(240, 27, 133, 0.15);
+            color: #ffffff;
+            border: 1px solid #f01b85;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .language-btn:hover {
+            background: #f01b85;
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(240, 27, 133, 0.3);
+        }
+
+        .language-btn i {
+            font-size: 0.9rem;
+        }
+
+        .language-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: rgba(10, 10, 10, 0.98);
+            min-width: 150px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            border: 1px solid #f01b85;
+            border-radius: 10px;
+            z-index: 1002;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(240, 27, 133, 0.1);
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f01b85;
+            color: #000;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .nav-item a:hover {
+            background-color: #f01b85;
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(240, 27, 133, 0.3);
+        }
+
+        .nav-item i {
+            font-size: 1rem;
+        }
+
+        /* Wiki Link - SPECIFIC FIX */
+        .wiki-link {
+            display: flex !important;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .wiki-link-text {
+            display: inline;
+        }
+
+        .english-only {
+            display: inline;
+        }
+
+        .portuguese-only {
+            display: none;
+        }
+
+        body.portuguese .english-only {
+            display: none;
+        }
+
+        body.portuguese .portuguese-only {
+            display: inline;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+            background: none;
+            border: none;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #ffffff;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Navigation responsiveness */
+        @media (max-width: 1024px) {
+            .nav-menu {
+                gap: 15px;
+            }
+            
+            .nav-item a {
+                font-size: 0.9rem;
+                padding: 7px 12px;
+            }
+            
+            .logo-text {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav-menu {
+                gap: 10px;
+            }
+            
+            .nav-item a {
+                font-size: 0.85rem;
+                padding: 6px 10px;
+            }
+            
+            .nav-item i {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background-color: rgba(10, 10, 10, 0.98);
+                width: 100%;
+                text-align: left;
+                transition: 0.5s ease;
+                padding: 20px 0;
+                gap: 0;
+                border-top: 1px solid #f01b85;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+                max-height: calc(100vh - 70px);
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-item a {
+                display: flex;
+                padding: 18px 25px;
+                border-radius: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                font-size: 1rem;
+                justify-content: flex-start;
+                gap: 15px;
+            }
+
+            .nav-item a:hover {
+                background-color: #f01b85;
+                color: #000;
+                padding-left: 35px;
+            }
+            
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            
+            .language-switcher {
+                margin-right: 15px;
+            }
+            
+            .language-btn {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 12px 15px;
+            }
+            
+            .logo-text {
+                font-size: 1.1rem;
+            }
+            
+            .nav-menu {
+                top: 60px;
+            }
+            
+            .language-switcher {
+                margin-right: 10px;
+            }
+            
+            .language-btn {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Adjust main content to not hide behind fixed navbar */
+        body {
+            padding-top: 70px; /* Navbar height */
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding-top: 60px;
+            }
+        }
+
+        /* === GENERAL STYLE === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+
+        body {
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111111;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #f01b85;
+            border-radius: 4px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        main {
+            padding: 30px 0 60px 0;
+        }
+
+        /* === PAGE HEADER === */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f01b85;
+            position: relative;
+        }
+
+        .page-title {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: #f01b85;
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #cccccc;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            color: #f01b85;
+            font-weight: 700;
+        }
+
+        /* === FILTERS AND SEARCH BAR === */
+        .filters-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filters-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #f01b85;
+        }
+
+        .filters-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 768px) {
+            .filters-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        .filters-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filters-title i {
+            color: #f01b85;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(240, 27, 133, 0.15);
+            color: #ffffff;
+            border: 1px solid #f01b85;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-btn.active {
+            background: #f01b85;
+            color: #000;
+        }
+
+        .filter-btn:hover:not(.active) {
+            background: rgba(240, 27, 133, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .search-container {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            padding: 12px 20px 12px 45px;
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #f01b85;
+            box-shadow: 0 0 0 2px rgba(240, 27, 133, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #cccccc;
+        }
+
+        .results-info {
+            margin-top: 15px;
+            color: #cccccc;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        /* === GALLERY GRID === */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .image-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+            border-color: #f01b85;
+            box-shadow: 0 15px 30px rgba(240, 27, 133, 0.2);
+        }
+
+        .image-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #f01b85;
+            z-index: 1;
+        }
+
+        .card-header {
+            padding: 20px 20px 15px;
+            position: relative;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title i {
+            color: #f01b85;
+        }
+
+        .card-type {
+            display: inline-block;
+            background: rgba(240, 27, 133, 0.2);
+            color: #f01b85;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .card-dimensions {
+            color: #cccccc;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 5px;
+        }
+
+        .card-preview {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .image-card:hover .card-preview img {
+            transform: scale(1.05);
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .preview-btn {
+            background: #f01b85;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .preview-btn:hover {
+            background: #ff4da6;
+            transform: translateY(-2px);
+        }
+
+        .card-footer {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .file-info {
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+
+        .file-size {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .download-btn {
+            background: rgba(240, 27, 133, 0.15);
+            color: #ffffff;
+            border: 1px solid #f01b85;
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background: #f01b85;
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        /* === PREVIEW MODAL === */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: #111111;
+            border-radius: 15px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: hidden;
+            border: 2px solid #f01b85;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #f01b85;
+        }
+
+        .modal-body {
+            padding: 20px;
+            text-align: center;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 60vh;
+            border-radius: 10px;
+        }
+
+        .modal-footer {
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* === NO RESULTS MESSAGE === */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+
+        .no-results i {
+            font-size: 3rem;
+            color: #f01b85;
+            margin-bottom: 20px;
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .no-results p {
+            color: #cccccc;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* === FLOATING BACK TO TOP BUTTON === */
+        .floating-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #f01b85;
+            color: #000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 20px rgba(240, 27, 133, 0.4);
+            transition: all 0.3s ease;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .floating-top-btn.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .floating-top-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(240, 27, 133, 0.6);
+        }
+
+        /* === RESPONSIVENESS === */
+        @media (max-width: 992px) {
+            .filters-section {
+                padding: 20px;
+            }
+            
+            .gallery-grid {
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 20px 0 50px 0;
+            }
+            
+            .header {
+                margin-bottom: 30px;
+                padding-bottom: 25px;
+            }
+            
+            .image-card {
+                margin-bottom: 20px;
+            }
+            
+            .modal-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
+            
+            .floating-top-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .filter-buttons {
+                justify-content: center;
+            }
+            
+            .filter-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .search-input {
+                padding: 10px 15px 10px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-text" id="site-title">背徳の絆</span>
+            </a>
+            
+            <!-- Language selection button -->
+            <div class="language-switcher">
+                <div class="language-dropdown" id="languageDropdown">
+                    <button class="language-btn" id="languageBtn">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">日本語</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <!-- Portuguese option leads to Portuguese version -->
+                        <a href="https://lacosprofanos.com.br/wallpapers&icons" class="language-option" data-lang="pt">
+                            Português
+                        </a>
+                        <!-- English option -->
+                        <a href="https://lacosprofanos.com.br/wallpapers&icons/en" class="language-option" data-lang="en">
+                            English
+                        </a>
+                        <!-- Japanese active option (not clickable) -->
+                        <a href="#" class="language-option" data-lang="jp" style="background-color: rgba(240, 27, 133, 0.3); color: #ff4da6; pointer-events: none;">
+                            <i class="fas fa-check"></i> 日本語
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="https://lacosprofanos.com.br/jp" class="nav-link">
+                        <i class="fas fa-home"></i> 
+                        メインサイト
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://lacosprofanos.blogspot.com/" target="_blank" class="nav-link">
+                        <i class="fas fa-blog"></i> 
+                        ブログ
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <!-- Wiki link -->
+                    <a href="https://profanebonds.fandom.com/wiki/" target="_blank" class="nav-link wiki-link" id="wikiLink">
+                        <i class="fas fa-book"></i> 
+                        <span class="wiki-link-text">Wiki</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://bit.ly/lptos-jp" target="_blank" class="nav-link">
+                        <i class="fas fa-file-contract"></i> 
+                        利用規約
+                    </a>
+                </li>
+            </ul>
+            
+            <button class="hamburger" id="hamburger" aria-label="メニュー">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Floating back to top button -->
+    <a href="#top" class="floating-top-btn" id="floatingTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Preview Modal -->
+    <div class="modal-overlay" id="previewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalImageTitle">プレビュー</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img id="modalImage" src="" alt="" class="modal-image">
+            </div>
+            <div class="modal-footer">
+                <button class="download-btn" id="modalDownloadBtn">
+                    <i class="fas fa-download"></i> 
+                    <span>画像をダウンロード</span>
+                </button>
+                <button class="preview-btn" id="closeModalBtn">
+                    <i class="fas fa-times"></i> 
+                    <span>閉じる</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <!-- Page header -->
+        <header class="header" id="top">
+            <h1 class="page-title" id="pageTitle">壁紙 & アイコン</h1>
+            <p class="subtitle" id="pageSubtitle">
+                <span class="highlight" id="site-name">背徳の絆</span>
+                の限定壁紙とアイコンをダウンロードしましょう。
+                すべてのファイルは無料でダウンロードできます。
+            </p>
+        </header>
+
+        <!-- Filters and Search -->
+        <section class="filters-section">
+            <h2 class="filters-title">
+                <i class="fas fa-filter"></i> 
+                <span>フィルター</span>
+            </h2>
+            
+            <div class="filters-container">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-layer-group"></i> 
+                        <span>すべて</span>
+                    </button>
+                    <button class="filter-btn" data-filter="icon">
+                        <i class="fas fa-user-circle"></i> 
+                        <span>アイコン</span>
+                    </button>
+                    <button class="filter-btn" data-filter="wallpaper">
+                        <i class="fas fa-image"></i> 
+                        <span>壁紙</span>
+                    </button>
+                </div>
+                
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" class="search-input" placeholder="名前で検索...">
+                </div>
+            </div>
+            
+            <div class="results-info" id="resultsInfo">
+                <span>表示中：</span>
+                <span id="resultsCount">5</span>
+                <span>/ 5アイテム</span>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <div class="gallery-grid" id="galleryContainer">
+            <!-- Cards will be generated via JavaScript -->
+        </div>
+
+        <!-- Message when no results found -->
+        <div class="no-results" id="noResultsMessage" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>
+                <span>アイテムが見つかりません</span>
+            </h3>
+            <p>
+                <span>他の検索ワードを試すか、別のフィルターを選択してください。</span>
+            </p>
+        </div>
+    </main>
+
+    <script>
+        // Wallpapers and Icons data (in Japanese)
+        const galleryItems = [
+            {
+                id: 1,
+                name: "カレブ",
+                type: "icon",
+                imagePath: "https://lacosprofanos.com.br/wallpapers&icons/kaleb.jpeg",
+                previewImage: "https://i.imgur.com/WVrHpaB.jpeg",
+                size: "136 KB",
+                dimensions: "1000×1000",
+                description: "キャラクター「カレブ」のアイコン"
+            },
+            {
+                id: 2,
+                name: "最後の天使",
+                type: "wallpaper",
+                imagePath: "https://lacosprofanos.com.br/wallpapers&icons/anjo.png",
+                previewImage: "https://i.imgur.com/IHCgQPS.png",
+                size: "829 KB",
+                dimensions: "1280×720",
+                description: "「最後の天使」の壁紙"
+            },
+            {
+                id: 3,
+                name: "エナヤ vs ハミア",
+                type: "wallpaper",
+                imagePath: "https://lacosprofanos.com.br/wallpapers&icons/enamiah.png",
+                previewImage: "https://i.imgur.com/RA2LetQ.png",
+                size: "430 KB",
+                dimensions: "1280×720",
+                description: "エナヤ vs ハミアの戦いの壁紙"
+            },
+            {
+                id: 4,
+                name: "ワヒ",
+                type: "icon",
+                imagePath: "https://lacosprofanos.com.br/wallpapers&icons/wahi.png",
+                previewImage: "https://i.imgur.com/Py44HxM.png",
+                size: "171 KB",
+                dimensions: "768×768",
+                description: "クリエイター「ワヒ」のアイコン"
+            },
+            {
+                id: 5,
+                name: "ノクサム",
+                type: "icon",
+                imagePath: "https://lacosprofanos.com.br/wallpapers&icons/noxum.png",
+                previewImage: "https://i.imgur.com/jI5RKKU.png",
+                size: "228 KB",
+                dimensions: "1280×1280",
+                description: "キャラクター「ノクサム」のアイコン"
+            }
+        ];
+
+        // Function to normalize text (remove accents and special characters)
+        function normalizeText(text) {
+            return text
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/[^a-z0-9\s]/g, '');
+        }
+
+        // Function to force download of a URL
+        function forceDownload(url, filename) {
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            link.target = '_blank';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Function to get filtered items
+        function getFilteredItems() {
+            const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+            const searchInput = document.getElementById('searchInput');
+            const searchTerm = searchInput ? normalizeText(searchInput.value) : '';
+            
+            let filteredItems = galleryItems;
+            
+            if (activeFilter !== 'all') {
+                filteredItems = filteredItems.filter(item => item.type === activeFilter);
+            }
+            
+            if (searchTerm) {
+                filteredItems = filteredItems.filter(item => {
+                    const itemName = normalizeText(item.name);
+                    const itemDescription = normalizeText(item.description);
+                    return itemName.includes(searchTerm) || itemDescription.includes(searchTerm);
+                });
+            }
+            
+            return filteredItems;
+        }
+
+        // Function to render gallery
+        function renderGallery(items) {
+            const galleryContainer = document.getElementById('galleryContainer');
+            const noResultsMessage = document.getElementById('noResultsMessage');
+            const resultsCount = document.getElementById('resultsCount');
+            
+            galleryContainer.innerHTML = '';
+            
+            if (items.length === 0) {
+                noResultsMessage.style.display = 'block';
+                if (resultsCount) resultsCount.textContent = '0';
+                return;
+            }
+            
+            noResultsMessage.style.display = 'none';
+            if (resultsCount) resultsCount.textContent = items.length;
+            
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'image-card';
+                card.dataset.type = item.type;
+                card.dataset.name = item.name.toLowerCase();
+                
+                const typeIcon = item.type === 'icon' ? 'fa-user-circle' : 'fa-image';
+                const typeText = item.type === 'icon' ? 'アイコン' : '壁紙';
+                const fileExtension = item.imagePath.split('.').pop();
+                const downloadFilename = `${item.name}.${fileExtension}`;
+                
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas ${typeIcon}"></i> ${item.name}
+                        </h3>
+                        <span class="card-type">${typeText}</span>
+                        <div class="card-dimensions">
+                            <i class="fas fa-expand-alt"></i> ${item.dimensions}
+                        </div>
+                    </div>
+                    <div class="card-preview">
+                        <img src="${item.previewImage}" alt="${item.description}" loading="lazy">
+                        <div class="card-overlay">
+                            <button class="preview-btn" data-id="${item.id}">
+                                <i class="fas fa-search-plus"></i> プレビュー
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="file-info">
+                            <div class="file-size">
+                                <i class="fas fa-weight-hanging"></i> ${item.size}
+                            </div>
+                        </div>
+                        <button class="download-btn" data-url="${item.imagePath}" data-filename="${downloadFilename}">
+                            <i class="fas fa-download"></i> ダウンロード
+                        </button>
+                    </div>
+                `;
+                
+                galleryContainer.appendChild(card);
+            });
+            
+            // Add event listeners to buttons
+            document.querySelectorAll('.download-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const url = this.getAttribute('data-url');
+                    const filename = this.getAttribute('data-filename');
+                    forceDownload(url, filename);
+                });
+            });
+            
+            document.querySelectorAll('.preview-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const itemId = parseInt(this.getAttribute('data-id'));
+                    openPreview(itemId);
+                });
+            });
+        }
+
+        // Function to open preview modal
+        function openPreview(itemId) {
+            const item = galleryItems.find(i => i.id === itemId);
+            if (!item) return;
+            
+            const modal = document.getElementById('previewModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalImageTitle = document.getElementById('modalImageTitle');
+            const modalDownloadBtn = document.getElementById('modalDownloadBtn');
+            
+            modalImage.src = item.previewImage;
+            modalImage.alt = item.description;
+            modalImageTitle.textContent = item.name;
+            
+            const fileExtension = item.imagePath.split('.').pop();
+            const downloadFilename = `${item.name}.${fileExtension}`;
+            
+            modalDownloadBtn.onclick = function() {
+                forceDownload(item.imagePath, downloadFilename);
+            };
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Function to close preview modal
+        function closePreview() {
+            const modal = document.getElementById('previewModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Function to filter and search items
+        function filterAndSearch() {
+            const filteredItems = getFilteredItems();
+            renderGallery(filteredItems);
+        }
+
+        // Hamburger menu
+        function setupHamburgerMenu() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (!hamburger || !navMenu) return;
+            
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close menu when clicking a link
+            document.querySelectorAll('.nav-item a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Close menu when clicking outside (on small screens)
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = navMenu.contains(event.target) || hamburger.contains(event.target);
+                
+                if (window.innerWidth <= 768 && 
+                    navMenu.classList.contains('active') && 
+                    !isClickInsideNav) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+            
+            // Close menu when resizing to large size
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        }
+
+        // Configure language dropdown
+        function setupLanguageDropdown() {
+            const languageBtn = document.getElementById('languageBtn');
+            const dropdownContent = document.getElementById('dropdownContent');
+            
+            if (languageBtn && dropdownContent) {
+                // Open/close dropdown when clicking the button
+                languageBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    dropdownContent.style.display = 
+                        dropdownContent.style.display === 'block' ? 'none' : 'block';
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.language-dropdown')) {
+                        dropdownContent.style.display = 'none';
+                    }
+                });
+                
+                // Prevent dropdown from closing when clicking inside it
+                dropdownContent.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+        }
+
+        // Detect and fix links to the same domain
+        function fixSameDomainLinks() {
+            document.querySelectorAll('a').forEach(link => {
+                const href = link.getAttribute('href');
+                const target = link.getAttribute('target');
+                
+                // If link is to the same domain and has target="_blank", remove target
+                if (href && href.includes('lacosprofanos.com.br') && target === '_blank') {
+                    link.removeAttribute('target');
+                    console.log('同じタブで開くようにリンクを修正:', href);
+                }
+            });
+        }
+
+        // Initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configure hamburger menu
+            setupHamburgerMenu();
+            
+            // Configure language dropdown
+            setupLanguageDropdown();
+            
+            // Fix links to the same domain
+            fixSameDomainLinks();
+            
+            // Configure filters
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    filterAndSearch();
+                });
+            });
+            
+            // Configure search
+            const searchInput = document.getElementById('searchInput');
+            let searchTimeout;
+            
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    clearTimeout(searchTimeout);
+                    searchTimeout = setTimeout(filterAndSearch, 300);
+                });
+            }
+            
+            // Configure modal
+            document.getElementById('closeModal').addEventListener('click', closePreview);
+            document.getElementById('closeModalBtn').addEventListener('click', closePreview);
+            document.getElementById('previewModal').addEventListener('click', function(e) {
+                if (e.target === this) closePreview();
+            });
+            
+            // Close modal with ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closePreview();
+            });
+            
+            // Back to top button
+            window.addEventListener('scroll', function() {
+                const floatingBtn = document.getElementById('floatingTopBtn');
+                if (floatingBtn) {
+                    if (window.scrollY > 300) {
+                        floatingBtn.classList.add('active');
+                    } else {
+                        floatingBtn.classList.remove('active');
+                    }
+                }
+            });
+            
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Render initial gallery
+            renderGallery(galleryItems);
+            
+            // Fix links after gallery rendering
+            setTimeout(fixSameDomainLinks, 100);
+        });
+    </script>
+</body>
+</html>
