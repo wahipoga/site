@@ -960,13 +960,17 @@
                         <a href="https://lacosprofanos.com.br/wallpapers&icons/en" class="language-option" data-lang="en">
                             English
                         </a>
+                        <!-- Opção para Japonês -->
+                        <a href="https://lacosprofanos.com.br/jp" class="language-option" data-lang="jp">
+                            日本語
+                        </a>
                     </div>
                 </div>
             </div>
             
             <ul class="nav-menu" id="navMenu">
                 <li class="nav-item">
-                    <a href="https://lacosprofanos.com.br" target="_blank" class="nav-link">
+                    <a href="https://lacosprofanos.com.br" class="nav-link">
                         <i class="fas fa-home"></i> 
                         <span class="portuguese-only">Site Principal</span>
                     </a>
@@ -1379,6 +1383,20 @@
             }
         }
 
+        // Detectar e corrigir links para o mesmo domínio
+        function fixSameDomainLinks() {
+            document.querySelectorAll('a').forEach(link => {
+                const href = link.getAttribute('href');
+                const target = link.getAttribute('target');
+                
+                // Se o link é para o mesmo domínio e tem target="_blank", remove o target
+                if (href && href.includes('lacosprofanos.com.br') && target === '_blank') {
+                    link.removeAttribute('target');
+                    console.log('Corrigido link para abrir na mesma aba:', href);
+                }
+            });
+        }
+
         // Inicialização
         document.addEventListener('DOMContentLoaded', function() {
             // Configurar menu hambúrguer
@@ -1386,6 +1404,9 @@
             
             // Configurar dropdown de idioma
             setupLanguageDropdown();
+            
+            // Corrigir links para o mesmo domínio
+            fixSameDomainLinks();
             
             // Configurar filtros
             document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -1451,6 +1472,9 @@
             
             // Renderizar galeria inicial
             renderGallery(galleryItems);
+            
+            // Corrigir links após renderização da galeria
+            setTimeout(fixSameDomainLinks, 100);
         });
     </script>
 </body>
