@@ -778,9 +778,13 @@
                         <a href="https://lacosprofanos.com.br/wahi/" class="language-option" data-lang="pt">
                             Português
                         </a>
-                        <!-- "English" leads to English version -->
-                        <a href="https://lacosprofanos.com.br/wahi/en" class="language-option" data-lang="en" style="background-color: rgba(240, 27, 133, 0.3); color: #ff4da6;">
+                        <!-- "English" active option (not clickable) -->
+                        <a href="#" class="language-option" data-lang="en" style="background-color: rgba(240, 27, 133, 0.3); color: #ff4da6; pointer-events: none;">
                             <i class="fas fa-check"></i> English
+                        </a>
+                        <!-- Japanese option -->
+                        <a href="https://lacosprofanos.com.br/jp" class="language-option" data-lang="jp">
+                            日本語 (Japanese)
                         </a>
                     </div>
                 </div>
@@ -788,31 +792,31 @@
             
             <ul class="nav-menu" id="navMenu">
                 <li class="nav-item">
-                    <a href="https://lacosprofanos.com.br/en" target="_blank">
+                    <a href="https://lacosprofanos.com.br/en" class="nav-link">
                         <i class="fas fa-home"></i> 
                         <span>Main Site</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="https://lacosprofanos.com.br/wallpapers&icons/en" target="_blank">
+                    <a href="https://lacosprofanos.com.br/wallpapers&icons/en" class="nav-link">
                         <i class="fas fa-image"></i> 
                         <span>Wallpapers & Icons</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <!-- Blog remains the same -->
-                    <a href="https://lacosprofanos.blogspot.com/" target="_blank">
+                    <a href="https://lacosprofanos.blogspot.com/" target="_blank" class="nav-link">
                         <i class="fas fa-blog"></i> Blog
                     </a>
                 </li>
                 <li class="nav-item">
                     <!-- English Wiki link -->
-                    <a href="https://profanebonds.fandom.com/wiki/" target="_blank" class="wiki-link">
+                    <a href="https://profanebonds.fandom.com/wiki/" target="_blank" class="nav-link wiki-link">
                         <i class="fas fa-book"></i> Wiki
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="https://bit.ly/lptos-en" target="_blank">
+                    <a href="https://bit.ly/lptos-en" target="_blank" class="nav-link">
                         <i class="fas fa-file-contract"></i> 
                         <span>Terms of Service</span>
                     </a>
@@ -943,7 +947,7 @@
                         </div>
                     </a>
                     
-                    <a href="https://lacosprofanos.com.br/wahi/portfolio" target="_blank" class="social-card">
+                    <a href="https://lacosprofanos.com.br/wahi/portfolio" class="social-card">
                         <div class="social-icon" style="color: #f01b85;">
                             <i class="fas fa-briefcase"></i>
                         </div>
@@ -1159,6 +1163,28 @@
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                 });
+            });
+            
+            // ===== 7. FIX LINKS TO SAME DOMAIN =====
+            function fixSameDomainLinks() {
+                document.querySelectorAll('a').forEach(link => {
+                    const href = link.getAttribute('href');
+                    const target = link.getAttribute('target');
+                    
+                    // If link is to the same domain and has target="_blank", remove target
+                    if (href && href.includes('lacosprofanos.com.br') && target === '_blank') {
+                        link.removeAttribute('target');
+                        console.log('Fixed link to open in same tab:', href);
+                    }
+                });
+            }
+            
+            // Call function to fix links
+            fixSameDomainLinks();
+            
+            // ===== 8. ADD NAV-LINK CLASS TO NAVIGATION LINKS =====
+            document.querySelectorAll('.nav-item a').forEach(link => {
+                link.classList.add('nav-link');
             });
             
             console.log('System fully initialized');
