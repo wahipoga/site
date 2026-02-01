@@ -960,13 +960,17 @@
                         <a href="#" class="language-option" data-lang="en" style="background-color: rgba(240, 27, 133, 0.3); color: #ff4da6; pointer-events: none;">
                             <i class="fas fa-check"></i> English
                         </a>
+                        <!-- Japanese option -->
+                        <a href="https://lacosprofanos.com.br/wallpapers&icons/jp" class="language-option" data-lang="jp">
+                            日本語
+                        </a>
                     </div>
                 </div>
             </div>
             
             <ul class="nav-menu" id="navMenu">
                 <li class="nav-item">
-                    <a href="https://lacosprofanos.com.br/en" target="_blank" class="nav-link">
+                    <a href="https://lacosprofanos.com.br/en" class="nav-link">
                         <i class="fas fa-home"></i> 
                         <span class="english-only">Main Site</span>
                     </a>
@@ -1378,6 +1382,20 @@
             }
         }
 
+        // Detect and fix links to the same domain
+        function fixSameDomainLinks() {
+            document.querySelectorAll('a').forEach(link => {
+                const href = link.getAttribute('href');
+                const target = link.getAttribute('target');
+                
+                // If link is to the same domain and has target="_blank", remove target
+                if (href && href.includes('lacosprofanos.com.br') && target === '_blank') {
+                    link.removeAttribute('target');
+                    console.log('Fixed link to open in same tab:', href);
+                }
+            });
+        }
+
         // Initialization
         document.addEventListener('DOMContentLoaded', function() {
             // Configure hamburger menu
@@ -1385,6 +1403,9 @@
             
             // Configure language dropdown
             setupLanguageDropdown();
+            
+            // Fix links to the same domain
+            fixSameDomainLinks();
             
             // Configure filters
             document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -1450,6 +1471,9 @@
             
             // Render initial gallery
             renderGallery(galleryItems);
+            
+            // Fix links after gallery rendering
+            setTimeout(fixSameDomainLinks, 100);
         });
     </script>
 </body>
