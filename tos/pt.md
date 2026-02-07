@@ -1,6 +1,6 @@
 # Termos de Serviço – Laços Profanos
 
-**Última atualização:** 22/01/2026  
+**Última atualização:** 07/02/2026  
 **Vigência:** Estes termos entram em vigor imediatamente após sua publicação.
 
 **Aviso sobre Atualizações:**
