@@ -1,6 +1,6 @@
 # Terms of Service – Laços Profanos
 
-**Last Updated:** 22/01/2026  
+**Last Updated:** 02/07/2026  
 **Effective Date:** These terms come into effect immediately upon publication.
 
 **Update Notice:**
@@ -114,7 +114,7 @@ We allow tools that ASSIST but DO NOT REPLACE the human:
 - You assume all legal, tax, and labor-related risks
 
 ### 3.3 Recommendation (NOT mandatory)
-It is **advisable** to email **[contato@lacosprofanos.com.br](mailto:contato@lacosprofanos.com.br)** if:
+It is **advisable** to email **[suporte@lacosprofanos.com.br](mailto:suporte@lacosprofanos.com.br)** if:
 - You have doubts about the HUMAN originality of your content
 - Your project is large-scale
 - You wish to avoid future problems
@@ -173,13 +173,13 @@ Laços Profanos **is NOT liable** for:
 - Any related damages
 
 ### 6.4 Reporting AI Usage:
-- Anyone can report suspected AI use to [contato@lacosprofanos.com.br](mailto:contato@lacosprofanos.com.br)
+- Anyone can report suspected AI use to [suporte@lacosprofanos.com.br](mailto:suporte@lacosprofanos.com.br)
 - Reports must include: URL, reasons for suspicion, evidence if possible. We will investigate and take action per Section 6.1
 
 ---
 ## 7. Final Provisions
 - **Governing law:** Brazil
-- **Contact:** [contato@lacosprofanos.com.br](mailto:contato@lacosprofanos.com.br)
+- **Contact:** [suporte@lacosprofanos.com.br](mailto:suporte@lacosprofanos.com.br)
 
 ---
 ### **FINAL BRAND STATEMENT:**
