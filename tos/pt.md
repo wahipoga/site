@@ -115,7 +115,7 @@ Permitimos ferramentas que ASSISTEM mas NÃO SUBSTITUEM o humano:
 - Você assume todos os riscos legais, fiscais e trabalhistas
 
 ### 3.3 Recomendação (NÃO obrigatória)
-É **recomendável** enviar e-mail para **[contato@lacosprofanos.com.br](mailto:contato@lacosprofanos.com.br)** se:
+É **recomendável** enviar e-mail para **[suporte@lacosprofanos.com.br](mailto:suporte@lacosprofanos.com.br)** se:
 - Tiver dúvidas sobre a originalidade HUMANA do seu conteúdo
 - Seu projeto for de grande escala
 - Quiser evitar problemas futuros
@@ -174,13 +174,13 @@ Laços Profanos **NÃO se responsabiliza** por:
 - Qualquer prejuízo relacionado
 
 ### 6.4 Denúncia de Uso de IA:
-- Qualquer pessoa pode denunciar suspeita de uso de IA para [contato@lacosprofanos.com.br](mailto:contato@lacosprofanos.com.br)
+- Qualquer pessoa pode denunciar suspeita de uso de IA para [suporte@lacosprofanos.com.br](mailto:suporte@lacosprofanos.com.br)
 - Denúncias devem incluir: URL, motivos da suspeita, evidências se possível, Investigaremos e tomaremos ação conforme a Seção 6.1
 
 ---
 ## 7. Disposições Finais
 - **Lei aplicável:** Brasil
-- **Contato:** [contato@lacosprofanos.com.br](mailto:contato@lacosprofanos.com.br)
+- **Contato:** [suporte@lacosprofanos.com.br](mailto:suporte@lacosprofanos.com.br)
 
 ---
 ### **DECLARAÇÃO FINAL DA MARCA:**
