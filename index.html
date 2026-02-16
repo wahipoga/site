@@ -325,7 +325,7 @@
 
         /* Ajuste do conteúdo principal para não ficar atrás da navbar fixa */
         body {
-            padding-top: 70px; /* Altura da navbar */
+            padding-top: 70px;
         }
         
         @media (max-width: 480px) {
@@ -485,6 +485,98 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+        }
+
+        /* Estilos para a nova seção do projeto */
+        .project-container {
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .project-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #f01b85;
+        }
+
+        .project-description {
+            text-align: center;
+            color: #ffffff;
+            line-height: 1.8;
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            background: rgba(240, 27, 133, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #f01b85;
+            width: 100%;
+            word-wrap: break-word;
+            margin-bottom: 25px;
+        }
+
+        .project-description p {
+            margin-bottom: 15px;
+        }
+
+        .project-description p:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-image {
+            width: 100%;
+            max-width: 600px; /* Reduzido de 800px para 600px */
+            margin: 0 auto 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(240, 27, 133, 0.3);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .project-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .project-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(240, 27, 133, 0.15);
+            color: #ffffff;
+            border: 1px solid #f01b85;
+            padding: 14px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .project-btn:hover {
+            background: #f01b85;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(240, 27, 133, 0.4);
+        }
+
+        .project-btn i {
+            font-size: 1.2rem;
         }
 
         .continents-container {
@@ -709,6 +801,18 @@
             .continents-container {
                 padding: 20px;
             }
+            
+            .project-container {
+                padding: 25px;
+            }
+            
+            .project-description {
+                padding: 20px;
+            }
+            
+            .project-image {
+                max-width: 500px; /* Ajuste para telas médias */
+            }
         }
 
         @media (max-width: 768px) {
@@ -736,6 +840,23 @@
             .continents-container {
                 padding: 18px;
                 margin-top: 25px;
+            }
+            
+            .project-container {
+                padding: 20px;
+            }
+            
+            .project-description {
+                padding: 18px;
+            }
+            
+            .project-image {
+                max-width: 450px; /* Ajuste para tablets */
+            }
+            
+            .project-btn {
+                padding: 12px 25px;
+                font-size: 1rem;
             }
             
             .creator-card {
@@ -773,6 +894,15 @@
                 font-size: 0.95rem;
             }
             
+            .project-description {
+                padding: 15px;
+                font-size: 0.95rem;
+            }
+            
+            .project-image {
+                max-width: 100%; /* Em mobile, ocupa a largura total com margens */
+            }
+            
             .creator-buttons {
                 flex-direction: column;
                 width: 100%;
@@ -804,6 +934,16 @@
             
             .creator-desc {
                 font-size: 0.9rem;
+            }
+            
+            .project-description {
+                font-size: 0.9rem;
+            }
+            
+            .project-btn {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+                width: 100%;
             }
         }
     </style>
@@ -925,6 +1065,28 @@
                     <div class="social-icon"><i class="fab fa-reddit"></i></div>
                     <div class="social-content"><h3>Reddit</h3><p>Comunidade no Reddit</p></div>
                 </a>
+            </div>
+        </section>
+
+        <!-- NOVA SEÇÃO: Laços Profanos – Pacto de Vingança! -->
+        <section id="projeto" class="section">
+            <h2 class="section-title">Nosso Próximo Projeto</h2>
+            <div class="project-container">
+                <div class="project-description">
+                    <p><span class="highlight">Laços Profanos – Pacto de Vingança!</span></p>
+                    <p>Esta é a história de Luke Zequeri, um jovem detetive que, ao investigar uma fábrica abandonada, encontra um colar misterioso. Acidentalmente, ao quebrá-lo, ele chama a atenção de uma mulher mascarada, que o ataca, matando-o junto com sua esposa grávida. Ressuscitado por um demônio enigmático, Luke agora embarca em uma jornada sombria em busca de vingança.</p>
+                    <p>Estamos planejando produzir um piloto animado para este projeto! Entre em nosso servidor do Discord para receber novidades ou se tornar um voluntário.</p>
+                </div>
+                
+                <div class="project-image">
+                    <img src="https://i.imgur.com/C2Cfx1B.jpeg" alt="Laços Profanos – Pacto de Vingança! Banner de divulgação">
+                </div>
+                
+                <div style="text-align: center;">
+                    <a href="https://discord.com/invite/u4sD2JyTuT" target="_blank" class="project-btn">
+                        <i class="fab fa-discord"></i> Entrar no Discord
+                    </a>
+                </div>
             </div>
         </section>
 
