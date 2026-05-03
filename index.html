@@ -485,8 +485,8 @@
             white-space: nowrap;
         }
 
-        /* Estilos para a nova seção do projeto (sem imagem) */
-        .project-container {
+        /* Estilos para a seção de Contos Profanos (padronizada) */
+        .tales-container {
             margin-top: 30px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
@@ -497,7 +497,7 @@
             width: 100%;
         }
 
-        .project-container::before {
+        .tales-container::before {
             content: '';
             position: absolute;
             top: 0;
@@ -507,7 +507,7 @@
             background: #f01b85;
         }
 
-        .project-description {
+        .tales-description {
             text-align: center;
             color: #ffffff;
             line-height: 1.8;
@@ -521,15 +521,20 @@
             margin-bottom: 30px;
         }
 
-        .project-description p {
+        .tales-description p {
             margin-bottom: 15px;
         }
 
-        .project-description p:last-child {
+        .tales-description p:last-child {
             margin-bottom: 0;
         }
 
-        .project-btn {
+        .tales-highlight {
+            color: #f01b85;
+            font-weight: 700;
+        }
+
+        .tales-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -546,13 +551,13 @@
             margin-top: 10px;
         }
 
-        .project-btn:hover {
+        .tales-btn:hover {
             background: #f01b85;
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(240, 27, 133, 0.4);
         }
 
-        .project-btn i {
+        .tales-btn i {
             font-size: 1.2rem;
         }
 
@@ -779,11 +784,11 @@
                 padding: 20px;
             }
             
-            .project-container {
+            .tales-container {
                 padding: 25px;
             }
             
-            .project-description {
+            .tales-description {
                 padding: 25px;
             }
         }
@@ -815,15 +820,15 @@
                 margin-top: 25px;
             }
             
-            .project-container {
+            .tales-container {
                 padding: 20px;
             }
             
-            .project-description {
+            .tales-description {
                 padding: 20px;
             }
             
-            .project-btn {
+            .tales-btn {
                 padding: 12px 25px;
                 font-size: 1rem;
             }
@@ -863,7 +868,7 @@
                 font-size: 0.95rem;
             }
             
-            .project-description {
+            .tales-description {
                 padding: 18px;
                 font-size: 0.95rem;
             }
@@ -901,12 +906,12 @@
                 font-size: 0.9rem;
             }
             
-            .project-description {
+            .tales-description {
                 font-size: 0.9rem;
                 padding: 15px;
             }
             
-            .project-btn {
+            .tales-btn {
                 padding: 10px 20px;
                 font-size: 0.95rem;
                 width: 100%;
@@ -931,15 +936,12 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="dropdown-content" id="dropdownContent">
-                        <!-- Opção ativa (Português) -->
                         <a href="#" class="language-option active" data-lang="pt">
                             <i class="fas fa-check"></i> Português
                         </a>
-                        <!-- Opção para Inglês -->
                         <a href="https://lacosprofanos.com.br/en" class="language-option" data-lang="en">
                             English
                         </a>
-                        <!-- Opção para espanhol -->
                         <a href="https://lacosprofanos.com.br/es" class="language-option" data-lang="jp">
                             Español
                         </a>
@@ -1007,6 +1009,14 @@
                     <div class="social-icon"><i class="fab fa-whatsapp"></i></div>
                     <div class="social-content"><h3>WhatsApp</h3><p>Canal no WhatsApp</p></div>
                 </a>
+                 <a href="https://www.patreon.com/c/lacosprofanos" target="_blank" class="social-btn">
+                    <div class="social-icon"><i class="fab fa-patreon"></i></div>
+                    <div class="social-content"><h3>Patreon</h3><p>Canal en Patreon</p></div>
+                </a>
+                <a href="https://discord.com/invite/u4sD2JyTuT" target="_blank" class="social-btn">
+                    <div class="social-icon"><i class="fab fa-discord"></i></div>
+                    <div class="social-content"><h3>Discord</h3><p>Servidor no Discord</p></div>
+                </a>
                 <a href="https://lpfanarts.blogspot.com/" target="_blank" class="social-btn">
                     <div class="social-icon"><i class="fas fa-palette"></i></div>
                     <div class="social-content">
@@ -1014,10 +1024,6 @@
                         <p>Mural de artes dos fãs</p>
                         </div>
                         </a>
-                <a href="https://discord.com/invite/u4sD2JyTuT" target="_blank" class="social-btn">
-                    <div class="social-icon"><i class="fab fa-discord"></i></div>
-                    <div class="social-content"><h3>Discord</h3><p>Servidor no Discord</p></div>
-                </a>
                 <a href="https://www.instagram.com/lacosprofanos" target="_blank" class="social-btn">
                     <div class="social-icon"><i class="fab fa-instagram"></i></div>
                     <div class="social-content"><h3>Instagram</h3><p>Perfil no Instagram</p></div>
@@ -1042,6 +1048,24 @@
                     <div class="social-icon"><i class="fa-brands fa-bluesky"></i></div>
                     <div class="social-content"><h3>bluesky</h3><p>Perfil no Bluesky</p></div>
                 </a>
+            </div>
+        </section>
+
+        <!-- CONTOS PROFANOS - Nova seção padronizada -->
+        <section id="contos" class="section">
+            <h2 class="section-title">Contos Profanos</h2>
+            <div class="tales-container">
+                <div class="tales-description">
+                    <p><span class="tales-highlight">Contos Profanos - Laços Profanos</span> reúne diversos spin-offs ambientados no universo de Laços Profanos. Em formato de contos independentes, cada episódio apresenta uma nova história, com personagens, conflitos e perspectivas diferentes.</p>
+                    <p>Não há ordem cronológica nem continuação direta entre os capítulos - cada conto possui identidade própria e pode ser lido separadamente.</p>
+                    <p>Entre batalhas, dramas, mistérios e encontros inesperados, a obra nasce com o propósito de explorar toda a criatividade, profundidade e possibilidades que o universo <span class="tales-highlight">"profano"</span> tem a oferecer.</p>
+                </div>
+                <div style="text-align: center;">
+                    <a href="https://shre.ink/contos-profanos" target="_blank" class="tales-btn">
+                        <i class="fas fa-book-open"></i> Leia Agora
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -1115,7 +1139,6 @@
             const dropdownContent = document.getElementById('dropdownContent');
             
             if (languageBtn && dropdownContent) {
-                // Abrir/fechar dropdown ao clicar no botão
                 languageBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     if (dropdownContent.style.display === 'block') {
@@ -1125,14 +1148,12 @@
                     }
                 });
                 
-                // Fechar dropdown ao clicar fora
                 document.addEventListener('click', function(e) {
                     if (!e.target.closest('.language-dropdown')) {
                         dropdownContent.style.display = 'none';
                     }
                 });
                 
-                // Prevenir que o dropdown feche ao clicar dentro dele
                 dropdownContent.addEventListener('click', function(e) {
                     e.stopPropagation();
                 });
@@ -1155,7 +1176,6 @@
                     console.log('Menu active?', navMenu.classList.contains('active'));
                 });
                 
-                // Fechar menu ao clicar em links (mobile)
                 document.querySelectorAll('.nav-item a').forEach(link => {
                     link.addEventListener('click', function(e) {
                         if (window.innerWidth <= 768) {
@@ -1165,7 +1185,6 @@
                     });
                 });
                 
-                // Fechar menu ao clicar fora (mobile)
                 document.addEventListener('click', function(event) {
                     if (window.innerWidth <= 768 && 
                         navMenu.classList.contains('active') && 
@@ -1197,7 +1216,6 @@
                 const href = link.getAttribute('href');
                 const target = link.getAttribute('target');
                 
-                // Se o link é para o mesmo domínio e tem target="_blank", remove o target
                 if (href && href.includes('lacosprofanos.com.br') && target === '_blank') {
                     link.removeAttribute('target');
                     console.log('Corrigido link para abrir na mesma aba:', href);
