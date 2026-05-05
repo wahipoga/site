@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-
     <title>Profane Bonds</title>
     <link rel="icon" href="https://i.imgur.com/mgxXSto.png" type="image/png">    
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" rel="stylesheet">
+    
     <style>
-        /* === ESTILOS DE NAVEGACIÓN === */
+        /* === ESTILOS DE LA NAVEGACIÓN === */
         .navbar {
             position: fixed;
             top: 0;
@@ -183,6 +183,7 @@
             border: none;
             padding: 8px;
             z-index: 1001;
+            order: 3; /* Garantiza que quede a la derecha */
         }
 
         .hamburger span {
@@ -245,10 +246,10 @@
             .nav-menu {
                 position: fixed;
                 top: 70px;
-                left: -100%;
+                right: -100%; /* Sale de la derecha */
                 flex-direction: column;
                 background-color: rgba(10, 10, 10, 0.98);
-                width: 100%;
+                width: 100%; /* Ancho total */
                 text-align: left;
                 transition: 0.5s ease;
                 padding: 20px 0;
@@ -261,7 +262,7 @@
             }
 
             .nav-menu.active {
-                left: 0;
+                right: 0; /* Entra por la derecha */
             }
 
             .nav-item {
@@ -321,7 +322,7 @@
             }
         }
 
-        /* Ajuste del contenido principal para que no quede detrás de la navbar fija */
+        /* Ajuste del contenido principal para no quedar detrás de la navbar fija */
         body {
             padding-top: 70px;
         }
@@ -419,74 +420,151 @@
             font-weight: 700;
         }
 
-        .social-buttons {
+        /* === NUEVOS ESTILOS COMPACTOS PARA REDES SOCIALES === */
+        .social-buttons-compact {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 40px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 30px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .social-btn {
-            background: rgba(240, 27, 133, 0.15);
+        .social-btn-compact {
+            background: rgba(240, 27, 133, 0.1);
             color: #ffffff;
-            border: 1px solid #f01b85;
-            padding: 12px 20px;
-            border-radius: 25px;
+            border: 1px solid rgba(240, 27, 133, 0.3);
+            border-radius: 12px;
             text-decoration: none;
             transition: all 0.3s ease;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 12px;
-            font-weight: 600;
-            text-align: left;
-            min-height: 60px;
-            width: 100%;
+            justify-content: center;
+            padding: 15px 10px;
+            gap: 8px;
+            min-height: 80px;
+            text-align: center;
         }
 
-        .social-btn:hover {
+        .social-btn-compact:hover {
             background: #f01b85;
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(240, 27, 133, 0.3);
-            animation: glow 1s ease-in-out infinite alternate;
+            box-shadow: 0 8px 20px rgba(240, 27, 133, 0.4);
+            border-color: #f01b85;
         }
 
-        .social-icon {
-            font-size: 1.2rem;
-            width: 36px;
-            height: 36px;
+        .social-icon-compact {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            flex-shrink: 0;
+            transition: all 0.3s ease;
         }
 
-        .social-content {
-            flex: 1;
-            min-width: 0;
-            overflow: hidden;
+        .social-btn-compact:hover .social-icon-compact {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
         }
 
-        .social-content h3 {
-            font-size: 1rem;
-            margin-bottom: 4px;
-            font-weight: 600;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .social-content p {
+        .social-name-compact {
             font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.8);
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            font-weight: 600;
+            line-height: 1.2;
         }
 
-        /* Estilos para la nueva sección del proyecto (sin imagen) */
-        .project-container {
+        /* Tooltip opcional para mostrar descripción */
+        .social-btn-compact {
+            position: relative;
+        }
+
+        /* === RESPONSIVIDAD DE LAS REDES SOCIALES COMPACTAS === */
+        @media (max-width: 992px) {
+            .social-buttons-compact {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 8px;
+            }
+            
+            .social-btn-compact {
+                padding: 12px 8px;
+                min-height: 70px;
+            }
+            
+            .social-icon-compact {
+                font-size: 1.3rem;
+                width: 35px;
+                height: 35px;
+            }
+            
+            .social-name-compact {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .social-buttons-compact {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+            
+            .social-btn-compact {
+                padding: 10px 6px;
+                min-height: 65px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .social-buttons-compact {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
+            }
+            
+            .social-btn-compact {
+                padding: 8px 4px;
+                min-height: 60px;
+                border-radius: 10px;
+            }
+            
+            .social-icon-compact {
+                font-size: 1.2rem;
+                width: 30px;
+                height: 30px;
+            }
+            
+            .social-name-compact {
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .social-buttons-compact {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 5px;
+            }
+            
+            .social-btn-compact {
+                padding: 6px 3px;
+                min-height: 55px;
+            }
+            
+            .social-icon-compact {
+                font-size: 1.1rem;
+                width: 28px;
+                height: 28px;
+            }
+            
+            .social-name-compact {
+                font-size: 0.65rem;
+            }
+        }
+
+        /* Estilos para la sección de Cuentos Profanos (estandarizada) */
+        .tales-container {
             margin-top: 30px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
@@ -497,7 +575,7 @@
             width: 100%;
         }
 
-        .project-container::before {
+        .tales-container::before {
             content: '';
             position: absolute;
             top: 0;
@@ -507,7 +585,7 @@
             background: #f01b85;
         }
 
-        .project-description {
+        .tales-description {
             text-align: center;
             color: #ffffff;
             line-height: 1.8;
@@ -521,15 +599,20 @@
             margin-bottom: 30px;
         }
 
-        .project-description p {
+        .tales-description p {
             margin-bottom: 15px;
         }
 
-        .project-description p:last-child {
+        .tales-description p:last-child {
             margin-bottom: 0;
         }
 
-        .project-btn {
+        .tales-highlight {
+            color: #f01b85;
+            font-weight: 700;
+        }
+
+        .tales-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -546,13 +629,13 @@
             margin-top: 10px;
         }
 
-        .project-btn:hover {
+        .tales-btn:hover {
             background: #f01b85;
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(240, 27, 133, 0.4);
         }
 
-        .project-btn i {
+        .tales-btn i {
             font-size: 1.2rem;
         }
 
@@ -766,11 +849,6 @@
         }
 
         @media (max-width: 992px) {
-            .social-buttons {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-                gap: 12px;
-            }
-            
             .creators-grid {
                 gap: 25px;
             }
@@ -779,11 +857,11 @@
                 padding: 20px;
             }
             
-            .project-container {
+            .tales-container {
                 padding: 25px;
             }
             
-            .project-description {
+            .tales-description {
                 padding: 25px;
             }
         }
@@ -795,11 +873,6 @@
             
             .section {
                 margin-bottom: 50px;
-            }
-            
-            .social-buttons {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 12px;
             }
             
             .container {
@@ -815,15 +888,15 @@
                 margin-top: 25px;
             }
             
-            .project-container {
+            .tales-container {
                 padding: 20px;
             }
             
-            .project-description {
+            .tales-description {
                 padding: 20px;
             }
             
-            .project-btn {
+            .tales-btn {
                 padding: 12px 25px;
                 font-size: 1rem;
             }
@@ -834,11 +907,6 @@
         }
 
         @media (max-width: 576px) {
-            .social-buttons {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-            
             .creators-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -863,7 +931,7 @@
                 font-size: 0.95rem;
             }
             
-            .project-description {
+            .tales-description {
                 padding: 18px;
                 font-size: 0.95rem;
             }
@@ -901,12 +969,12 @@
                 font-size: 0.9rem;
             }
             
-            .project-description {
+            .tales-description {
                 font-size: 0.9rem;
                 padding: 15px;
             }
             
-            .project-btn {
+            .tales-btn {
                 padding: 10px 20px;
                 font-size: 0.95rem;
                 width: 100%;
@@ -931,15 +999,12 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="dropdown-content" id="dropdownContent">
-                        <!-- Opción para portugués -->
                         <a href="https://lacosprofanos.com.br/" class="language-option" data-lang="pt">
                             Português
                         </a>
-                        <!-- Opción para inglés -->
                         <a href="https://lacosprofanos.com.br/en" class="language-option" data-lang="en">
                             English
                         </a>
-                        <!-- Opción activa (Español) -->
                         <a href="#" class="language-option active" data-lang="es">
                             <i class="fas fa-check"></i> Español
                         </a>
@@ -950,7 +1015,7 @@
             <ul class="nav-menu" id="navMenu">
                 <li class="nav-item">
                     <a href="https://lacosprofanos.com.br/wallpapers&icons/es" target="_blank">
-                        <i class="fas fa-image"></i> Wallpapers & Icons
+                        <i class="fas fa-image"></i> Wallpapers & Iconos
                     </a>
                 </li>
                 <li class="nav-item">
@@ -984,73 +1049,67 @@
             <h2 class="section-title">Sobre Nosotros</h2>
             <div class="about-text">
                 <p>
-                    <span class="highlight">Profane Bonds</span> es una historia ficticia que nació como la idea de un manga inspirado en obras populares de la época. Con el tiempo, esa primera versión fue completamente repensada, descartada y reconstruida — y así el universo se expandió hasta convertirse en lo que conocemos hoy.
+                    <span class="highlight">Profane Bonds</span> es una historia ficticia que nació como la idea de un manga inspirado en obras populares de la época. Con el tiempo, esa primera versión fue totalmente repensada, descartada y reconstruida — y así el universo se expandió hasta convertirse en lo que conocemos hoy.
                 </p>
                 <p>
-                    Somos un proyecto completamente independiente, desarrollado y mantenido por solo dos personas. Trabajamos con dedicación para dar vida a este universo, crear contenido de calidad y compartir nuestra visión con quienes desean conocer más sobre Lazos Profanos.
+                    Somos un proyecto completamente independiente, desarrollado y mantenido por solo dos personas. Trabajamos con dedicación para dar vida a este universo, crear contenido de calidad y compartir nuestra visión con quienes desean conocer más sobre Laços Profanos.
                 </p>
             </div>
         </section>
 
-        <!-- Redes Sociales -->
+        <!-- Redes Sociales - Versión Compacta -->
         <section id="social" class="section">
             <h2 class="section-title">Redes Sociales</h2>
             <div class="about-text">
                 <p>Conéctate con nosotros a través de nuestras redes sociales:</p>
             </div>
-            <div class="social-buttons">
-                        
-                        <a href="https://www.patreon.com/c/lacosprofanos" target="_blank" class="social-btn">
-                    <div class="social-icon"><i class="fab fa-patreon"></i></div>
-                    <div class="social-content"><h3>Patreon</h3><p>Canal en Patreon</p></div>
+            <div class="social-buttons-compact">
+                <a href="https://www.patreon.com/c/lacosprofanos" target="_blank" class="social-btn-compact" title="Canal en Patreon">
+                    <div class="social-icon-compact"><i class="fab fa-patreon"></i></div>
+                    <div class="social-name-compact">Patreon</div>
                 </a>
-                <a href="https://discord.com/invite/u4sD2JyTuT" target="_blank" class="social-btn">
-                    <div class="social-icon"><i class="fab fa-discord"></i></div>
-                    <div class="social-content"><h3>Discord</h3><p>Servidor en Discord</p></div>
+                <a href="https://discord.com/invite/u4sD2JyTuT" target="_blank" class="social-btn-compact" title="Servidor en Discord">
+                    <div class="social-icon-compact"><i class="fab fa-discord"></i></div>
+                    <div class="social-name-compact">Discord</div>
                 </a>
-               
-                <a href="https://www.youtube.com/@LaçosProfanos" target="_blank" class="social-btn">
-                    <div class="social-icon"><i class="fab fa-youtube"></i></div>
-                    <div class="social-content"><h3>YouTube</h3><p>Canal en YouTube</p></div>
+                <a href="https://lpfanarts.blogspot.com/" target="_blank" class="social-btn-compact" title="Mural de artes de los fans">
+                    <div class="social-icon-compact"><i class="fas fa-palette"></i></div>
+                    <div class="social-name-compact">Fanarts</div>
                 </a>
-                <a href="https://ko-fi.com/profanebonds" target="_blank" class="social-btn">
-                    <div class="social-icon"><i class="fas fa-robot"></i></div>
-                    <div class="social-content"><h3>Ko-fi</h3><p>Canal en Ko-fi</p></div>
-                    
-                <a href="https://lpfanarts.blogspot.com/" target="_blank" class="social-btn">
-                    <div class="social-icon"><i class="fas fa-palette"></i></div>
-                    <div class="social-content">
-                        <h3>Fanarts</h3>
-                        <p>Mural de artes de los fans</p>
-                        </div>
-                        </a>
-               
+                <a href="https://www.youtube.com/@LaçosProfanos" target="_blank" class="social-btn-compact" title="Canal en YouTube">
+                    <div class="social-icon-compact"><i class="fab fa-youtube"></i></div>
+                    <div class="social-name-compact">YouTube</div>
+                </a>
+                 <a href="https://ko-fi.com/profanebonds" target="_blank" class="social-btn-compact" title="Channel on Telegram">
+                    <div class="social-icon-compact"><i class="fa-solid fa-mug-hot"></i></div>
+                    <div class="social-name-compact">Ko-fi</div>
+                </a>
             </div>
         </section>
 
-        <!-- La Tierra en Lazos Profanos -->
-        <section id="tierra" class="section">
-            <h2 class="section-title">La Tierra en Profane Bonds</h2>
+        <!-- La Tierra en Laços Profanos -->
+        <section id="earth" class="section">
+            <h2 class="section-title">La Tierra en Laços Profanos</h2>
             <div class="about-text">
                 <p>
-                    En el universo de Profane Bonds, el planeta Tierra no es como el nuestro. Está dividido en solo tres continentes, cada uno con sus propias características, culturas e historias:
+                    En el universo de Laços Profanos, el planeta Tierra no es como el nuestro. Está dividido en solo tres continentes, cada uno con sus propias características, culturas e historias:
                 </p>
             </div>
             <div class="continents-container">
                 <div class="continents-image">
-                    <img src="https://i.imgur.com/jrrLcpW.png" alt="Los tres continentes de Lazos Profanos: Kelster, Molton y Clifton">
+                    <img src="https://i.imgur.com/jrrLcpW.png" alt="Los tres continentes de Laços Profanos: Kelster, Molton y Clifton">
                 </div>
                 <p class="continents-description">
                     ❄️ Kelster — el continente frío, marcado por climas rigurosos, paisajes helados y pueblos acostumbrados a la resistencia.<br>
                     🍃 Molton — el continente intermedio, de equilibrio entre frío y calor, diversidad natural y cultural.<br>
-                    🔥 Clifton — el continente cálido, lleno de calor intenso, vida vibrante y tradiciones moldeadas por el sol.
+                    🔥 Clifton — el continente cálido, repleto de calor intenso, vida vibrante y tradiciones moldeadas por el sol.
                 </p>
             </div>
         </section>
 
         <!-- Las Mentes Detrás -->
-        <section id="creadores" class="section">
-            <h2 class="section-title">La mente detrás</h2>
+        <section id="creators" class="section">
+            <h2 class="section-title">La Mente Detrás</h2>
             <div class="creators-grid">
                 <!-- Wahi -->
                 <div class="creator-card">
@@ -1060,11 +1119,11 @@
                     <h3 class="creator-name">Eduarda Victoria</h3>
                     <p class="creator-role">La Creadora</p>
                     <p class="creator-desc">
-                        Más conocida por los seudónimos Wahipogo o Wahi, es la mente creativa detrás del universo de Profane Bonds. Además de idear la obra, actúa como guionista, directora creativa y gestora del proyecto. También es programadora, responsable del desarrollo y mantenimiento del sitio oficial de la obra.
+                        Más conocida por los pseudónimos Wahipogo o Wahi, es la mente creativa detrás del universo de Laços Profanos. Además de idealizar la obra, actúa como guionista, directora creativa y gestora del proyecto. También es programadora, responsable del desarrollo y mantenimiento del sitio oficial de la obra.
                     </p>
                     <!-- Botones adicionales -->
                     <div class="creator-buttons">
-                        <a href="https://lacosprofanos.com.br/wahi/es" class="nav-btn">
+                        <a href="https://lacosprofanos.com.br/wahi" class="nav-btn">
                             <i class="fas fa-share-alt"></i> Redes Sociales
                         </a>
                         <a href="https://github.com/wahipoga/portfolio" target="_blank" class="nav-btn">
@@ -1086,7 +1145,6 @@
             const dropdownContent = document.getElementById('dropdownContent');
             
             if (languageBtn && dropdownContent) {
-                // Abrir/cerrar dropdown al hacer clic en el botón
                 languageBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     if (dropdownContent.style.display === 'block') {
@@ -1096,14 +1154,12 @@
                     }
                 });
                 
-                // Cerrar dropdown al hacer clic fuera
                 document.addEventListener('click', function(e) {
                     if (!e.target.closest('.language-dropdown')) {
                         dropdownContent.style.display = 'none';
                     }
                 });
                 
-                // Prevenir que el dropdown se cierre al hacer clic dentro
                 dropdownContent.addEventListener('click', function(e) {
                     e.stopPropagation();
                 });
@@ -1123,10 +1179,9 @@
                     hamburger.classList.toggle('active');
                     navMenu.classList.toggle('active');
                     
-                    console.log('Menú active?', navMenu.classList.contains('active'));
+                    console.log('Menú activo?', navMenu.classList.contains('active'));
                 });
                 
-                // Cerrar menú al hacer clic en enlaces (móvil)
                 document.querySelectorAll('.nav-item a').forEach(link => {
                     link.addEventListener('click', function(e) {
                         if (window.innerWidth <= 768) {
@@ -1136,7 +1191,6 @@
                     });
                 });
                 
-                // Cerrar menú al hacer clic fuera (móvil)
                 document.addEventListener('click', function(event) {
                     if (window.innerWidth <= 768 && 
                         navMenu.classList.contains('active') && 
@@ -1168,10 +1222,9 @@
                 const href = link.getAttribute('href');
                 const target = link.getAttribute('target');
                 
-                // Si el enlace es al mismo dominio y tiene target="_blank", elimina target
                 if (href && href.includes('lacosprofanos.com.br') && target === '_blank') {
                     link.removeAttribute('target');
-                    console.log('Enlace corregido para abrir en la misma pestaña:', href);
+                    console.log('Corregido enlace para abrir en la misma pestaña:', href);
                 }
             });
         });
