@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Profane Bonds</title>
-    <link rel="icon" href="https://i.imgur.com/mgxXSto.png" type="image/png">
-    
+    <link rel="icon" href="https://i.imgur.com/mgxXSto.png" type="image/png">    
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" rel="stylesheet">
     
@@ -131,7 +130,7 @@
             display: block;
         }
 
-        /* Style for active option */
+        /* Style for the active option */
         .language-option.active {
             background-color: rgba(240, 27, 133, 0.3);
             color: #ff4da6;
@@ -184,6 +183,7 @@
             border: none;
             padding: 8px;
             z-index: 1001;
+            order: 3; /* Ensures it stays on the right */
         }
 
         .hamburger span {
@@ -246,10 +246,10 @@
             .nav-menu {
                 position: fixed;
                 top: 70px;
-                left: -100%;
+                right: -100%; /* Slides out to the right */
                 flex-direction: column;
                 background-color: rgba(10, 10, 10, 0.98);
-                width: 100%;
+                width: 100%; /* Full width */
                 text-align: left;
                 transition: 0.5s ease;
                 padding: 20px 0;
@@ -262,7 +262,7 @@
             }
 
             .nav-menu.active {
-                left: 0;
+                right: 0; /* Slides in from the right */
             }
 
             .nav-item {
@@ -322,9 +322,9 @@
             }
         }
 
-        /* Adjust main content to not hide behind fixed navbar */
+        /* Adjust main content so it doesn't stay behind the fixed navbar */
         body {
-            padding-top: 70px; /* Navbar height */
+            padding-top: 70px;
         }
         
         @media (max-width: 480px) {
@@ -420,70 +420,223 @@
             font-weight: 700;
         }
 
-        .social-buttons {
+        /* === NEW COMPACT STYLES FOR SOCIAL MEDIA === */
+        .social-buttons-compact {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 40px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 30px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .social-btn {
-            background: rgba(240, 27, 133, 0.15);
+        .social-btn-compact {
+            background: rgba(240, 27, 133, 0.1);
             color: #ffffff;
-            border: 1px solid #f01b85;
-            padding: 12px 20px;
-            border-radius: 25px;
+            border: 1px solid rgba(240, 27, 133, 0.3);
+            border-radius: 12px;
             text-decoration: none;
             transition: all 0.3s ease;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 12px;
-            font-weight: 600;
-            text-align: left;
-            min-height: 60px;
-            width: 100%;
+            justify-content: center;
+            padding: 15px 10px;
+            gap: 8px;
+            min-height: 80px;
+            text-align: center;
         }
 
-        .social-btn:hover {
+        .social-btn-compact:hover {
             background: #f01b85;
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(240, 27, 133, 0.3);
-            animation: glow 1s ease-in-out infinite alternate;
+            box-shadow: 0 8px 20px rgba(240, 27, 133, 0.4);
+            border-color: #f01b85;
         }
 
-        .social-icon {
-            font-size: 1.2rem;
-            width: 36px;
-            height: 36px;
+        .social-icon-compact {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            flex-shrink: 0;
+            transition: all 0.3s ease;
         }
 
-        .social-content {
-            flex: 1;
-            min-width: 0;
-            overflow: hidden;
+        .social-btn-compact:hover .social-icon-compact {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
         }
 
-        .social-content h3 {
-            font-size: 1rem;
-            margin-bottom: 4px;
-            font-weight: 600;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .social-content p {
+        .social-name-compact {
             font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Optional tooltip to show description */
+        .social-btn-compact {
+            position: relative;
+        }
+
+        /* === COMPACT SOCIAL MEDIA RESPONSIVENESS === */
+        @media (max-width: 992px) {
+            .social-buttons-compact {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 8px;
+            }
+            
+            .social-btn-compact {
+                padding: 12px 8px;
+                min-height: 70px;
+            }
+            
+            .social-icon-compact {
+                font-size: 1.3rem;
+                width: 35px;
+                height: 35px;
+            }
+            
+            .social-name-compact {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .social-buttons-compact {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+            
+            .social-btn-compact {
+                padding: 10px 6px;
+                min-height: 65px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .social-buttons-compact {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
+            }
+            
+            .social-btn-compact {
+                padding: 8px 4px;
+                min-height: 60px;
+                border-radius: 10px;
+            }
+            
+            .social-icon-compact {
+                font-size: 1.2rem;
+                width: 30px;
+                height: 30px;
+            }
+            
+            .social-name-compact {
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .social-buttons-compact {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 5px;
+            }
+            
+            .social-btn-compact {
+                padding: 6px 3px;
+                min-height: 55px;
+            }
+            
+            .social-icon-compact {
+                font-size: 1.1rem;
+                width: 28px;
+                height: 28px;
+            }
+            
+            .social-name-compact {
+                font-size: 0.65rem;
+            }
+        }
+
+        /* Styles for the Profane Tales section (standardized) */
+        .tales-container {
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
             overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            width: 100%;
+        }
+
+        .tales-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #f01b85;
+        }
+
+        .tales-description {
+            text-align: center;
+            color: #ffffff;
+            line-height: 1.8;
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            background: rgba(240, 27, 133, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid #f01b85;
+            width: 100%;
+            word-wrap: break-word;
+            margin-bottom: 30px;
+        }
+
+        .tales-description p {
+            margin-bottom: 15px;
+        }
+
+        .tales-description p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tales-highlight {
+            color: #f01b85;
+            font-weight: 700;
+        }
+
+        .tales-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(240, 27, 133, 0.15);
+            color: #ffffff;
+            border: 1px solid #f01b85;
+            padding: 14px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .tales-btn:hover {
+            background: #f01b85;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(240, 27, 133, 0.4);
+        }
+
+        .tales-btn i {
+            font-size: 1.2rem;
         }
 
         .continents-container {
@@ -696,17 +849,20 @@
         }
 
         @media (max-width: 992px) {
-            .social-buttons {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-                gap: 12px;
-            }
-            
             .creators-grid {
                 gap: 25px;
             }
             
             .continents-container {
                 padding: 20px;
+            }
+            
+            .tales-container {
+                padding: 25px;
+            }
+            
+            .tales-description {
+                padding: 25px;
             }
         }
 
@@ -717,11 +873,6 @@
             
             .section {
                 margin-bottom: 50px;
-            }
-            
-            .social-buttons {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 12px;
             }
             
             .container {
@@ -737,17 +888,25 @@
                 margin-top: 25px;
             }
             
+            .tales-container {
+                padding: 20px;
+            }
+            
+            .tales-description {
+                padding: 20px;
+            }
+            
+            .tales-btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
             .creator-card {
                 padding: 25px 18px;
             }
         }
 
         @media (max-width: 576px) {
-            .social-buttons {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-            
             .creators-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -769,6 +928,11 @@
             
             .continents-description {
                 padding: 15px;
+                font-size: 0.95rem;
+            }
+            
+            .tales-description {
+                padding: 18px;
                 font-size: 0.95rem;
             }
             
@@ -804,6 +968,17 @@
             .creator-desc {
                 font-size: 0.9rem;
             }
+            
+            .tales-description {
+                font-size: 0.9rem;
+                padding: 15px;
+            }
+            
+            .tales-btn {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -824,17 +999,14 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="dropdown-content" id="dropdownContent">
-                        <!-- Portuguese option (redirects to Portuguese site) -->
                         <a href="https://lacosprofanos.com.br" class="language-option" data-lang="pt">
                             Português
                         </a>
-                        <!-- Active option (English) -->
                         <a href="#" class="language-option active" data-lang="en">
                             <i class="fas fa-check"></i> English
                         </a>
-                        <!-- Japanese option -->
                         <a href="https://lacosprofanos.com.br/es" class="language-option" data-lang="es">
-                           Español
+                            Español
                         </a>
                     </div>
                 </div>
@@ -842,7 +1014,7 @@
             
             <ul class="nav-menu" id="navMenu">
                 <li class="nav-item">
-                    <a href="https://lacosprofanos.com.br/wallpapers&icons/en">
+                    <a href="https://lacosprofanos.com.br/wallpapers&icons/" target="_blank">
                         <i class="fas fa-image"></i> Wallpapers & Icons
                     </a>
                 </li>
@@ -852,12 +1024,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="https://sites.google.com/view/lacosprofanos/en/home" target="_blank">
+                    <a href="https://sites.google.com/view/lacosprofanos/" target="_blank">
                         <i class="fas fa-book"></i> Wiki
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="https://bit.ly/lptos-en" target="_blank">
+                    <a href="https://bit.ly/lptos-br" target="_blank">
                         <i class="fas fa-file-contract"></i> Terms of Service
                     </a>
                 </li>
@@ -877,46 +1049,87 @@
             <h2 class="section-title">About Us</h2>
             <div class="about-text">
                 <p>
-                    <span class="highlight">Profane Bonds</span> is a fictional story that began as a manga idea inspired by popular works of the time. Over time, this first version was completely rethought, discarded, and rebuilt — and so the universe expanded into what we know today.
+                    <span class="highlight">Profane Bonds</span> is a fictional story that was born as the idea for a manga inspired by popular works of the time. Over time, this first version was completely rethought, discarded, and rebuilt — and so the universe expanded until it became what we know today.
                 </p>
                 <p>
-                    We are a completely independent project, developed and maintained by just two people. We work diligently to bring this universe to life, create quality content, and share our vision with those who want to learn more about Profane Bonds.
+                    We are a completely independent project, developed and maintained by just two people. We work with dedication to bring this universe to life, create quality content, and share our vision with those who wish to know more about Profane Bonds.
                 </p>
             </div>
         </section>
 
-        <!-- Social Media -->
+        <!-- Social Media - Compact Version -->
         <section id="social" class="section">
             <h2 class="section-title">Social Media</h2>
             <div class="about-text">
                 <p>Connect with us through our social media:</p>
             </div>
-            <div class="social-buttons">
-                <!-- Keeping only translated social media -->
-                <a href="https://www.patreon.com/c/lacosprofanos" target="_blank" class="social-btn">
-                    <div class="social-icon"><i class="fab fa-patreon"></i></div>
-                    <div class="social-content"><h3>Patreon</h3><p>Support us on Patreon</p></div>
+            <div class="social-buttons-compact">
+                <a href="https://tipa.ai/lacosprofanos" target="_blank" class="social-btn-compact" title="Channel on Tipa.ai">
+                    <div class="social-icon-compact"><i class="fas fa-robot"></i></div>
+                    <div class="social-name-compact">Tipa.ai</div>
                 </a>
-                <a href="https://discord.com/invite/u4sD2JyTuT" target="_blank" class="social-btn">
-                    <div class="social-icon"><i class="fab fa-discord"></i></div>
-                    <div class="social-content"><h3>Discord</h3><p>Discord Server</p></div>
+                <a href="https://bit.ly/lacosprofanosZap" target="_blank" class="social-btn-compact" title="Channel on WhatsApp">
+                    <div class="social-icon-compact"><i class="fab fa-whatsapp"></i></div>
+                    <div class="social-name-compact">WhatsApp</div>
                 </a>
-                 <a href="https://lpfanarts.blogspot.com/" target="_blank" class="social-btn">
-                    <div class="social-icon"><i class="fas fa-palette"></i></div>
-                    <div class="social-content">
-                        <h3>Fanarts</h3>
-                        <p>fan-made art mural</p>
-                        </div>
-                        </a>
-                        
-                <a href="https://www.youtube.com/@LaçosProfanos" target="_blank" class="social-btn">
-                    <div class="social-icon"><i class="fab fa-youtube"></i></div>
-                    <div class="social-content"><h3>YouTube</h3><p>YouTube Channel</p></div>
+                <a href="https://www.patreon.com/c/lacosprofanos" target="_blank" class="social-btn-compact" title="Channel on Patreon">
+                    <div class="social-icon-compact"><i class="fab fa-patreon"></i></div>
+                    <div class="social-name-compact">Patreon</div>
                 </a>
-                <a href="https://ko-fi.com/profanebonds" target="_blank" class="social-btn">
-                    <div class="social-icon"><i class="fas fa-mug-hot"></i></div>
-                    <div class="social-content"><h3>Ko-fi</h3><p>Support us on Ko-fi</p></div>
+                <a href="https://discord.com/invite/u4sD2JyTuT" target="_blank" class="social-btn-compact" title="Server on Discord">
+                    <div class="social-icon-compact"><i class="fab fa-discord"></i></div>
+                    <div class="social-name-compact">Discord</div>
                 </a>
+                <a href="https://lpfanarts.blogspot.com/" target="_blank" class="social-btn-compact" title="Fan art wall">
+                    <div class="social-icon-compact"><i class="fas fa-palette"></i></div>
+                    <div class="social-name-compact">Fanarts</div>
+                </a>
+                <a href="https://www.instagram.com/lacosprofanos" target="_blank" class="social-btn-compact" title="Profile on Instagram">
+                    <div class="social-icon-compact"><i class="fab fa-instagram"></i></div>
+                    <div class="social-name-compact">Instagram</div>
+                </a>
+                <a href="https://x.com/lacosprofanos" target="_blank" class="social-btn-compact" title="Profile on X (Twitter)">
+                    <div class="social-icon-compact"><i class="fab fa-twitter"></i></div>
+                    <div class="social-name-compact">X (Twitter)</div>
+                </a>
+                <a href="https://www.youtube.com/@LaçosProfanos" target="_blank" class="social-btn-compact" title="Channel on YouTube">
+                    <div class="social-icon-compact"><i class="fab fa-youtube"></i></div>
+                    <div class="social-name-compact">YouTube</div>
+                </a>
+                <a href="https://t.me/lacosprofanos" target="_blank" class="social-btn-compact" title="Channel on Telegram">
+                    <div class="social-icon-compact"><i class="fab fa-telegram"></i></div>
+                    <div class="social-name-compact">Telegram</div>
+                </a>
+                <a href="https://www.reddit.com/r/lacosprofanos" target="_blank" class="social-btn-compact" title="Community on Reddit">
+                    <div class="social-icon-compact"><i class="fab fa-reddit"></i></div>
+                    <div class="social-name-compact">Reddit</div>
+                </a>
+                <a href="https://bsky.app/profile/lacosprofanos.com.br" target="_blank" class="social-btn-compact" title="Profile on Bluesky">
+                    <div class="social-icon-compact"><i class="fa-brands fa-bluesky"></i></div>
+                    <div class="social-name-compact">Bluesky</div>
+                </a>
+                <a href="https://www.wattpad.com/user/LacosProfanos" target="_blank" class="social-btn-compact" title="Profile on Wattpad">
+                    <div class="social-icon-compact"><i class="fa-solid fa-w"></i></div>
+                    <div class="social-name-compact">Wattpad</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- PROFANE TALES -->
+        <section id="contos" class="section">
+            <h2 class="section-title">Profane Tales</h2>
+            <div class="tales-container">
+                <div class="tales-description">
+                    <p><span class="tales-highlight">Profane Tales - Profane Bonds</span> brings together various spin-offs set in the Profane Bonds universe. In the format of independent short stories, each episode presents a new story, with different characters, conflicts, and perspectives.</p>
+                    <p>There is no chronological order or direct continuation between the chapters - each tale has its own identity and can be read separately.</p>
+                    <p>Between battles, dramas, mysteries, and unexpected encounters, the work is born with the purpose of exploring all the creativity, depth, and possibilities that the <span class="tales-highlight">"profane"</span> universe has to offer.</p>
+                </div>
+                <div style="text-align: center;">
+                    <a href="https://shre.ink/contos-profanos" target="_blank" class="tales-btn">
+                        <i class="fas fa-book-open"></i> Read Now
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -925,16 +1138,16 @@
             <h2 class="section-title">Earth in Profane Bonds</h2>
             <div class="about-text">
                 <p>
-                    In the Profane Bonds universe, planet Earth is not like ours. It is divided into only three continents, each with its own characteristics, cultures, and histories:
+                    In the Profane Bonds universe, planet Earth is not like ours. It is divided into only three continents, each with its own characteristics, cultures, and stories:
                 </p>
             </div>
             <div class="continents-container">
                 <div class="continents-image">
-                    <img src="https://i.imgur.com/jrrLcpW.png" alt="The three continents of Profane Bonds: Kelster, Molton and Clifton">
+                    <img src="https://i.imgur.com/jrrLcpW.png" alt="The three continents of Profane Bonds: Kelster, Molton, and Clifton">
                 </div>
                 <p class="continents-description">
                     ❄️ Kelster — the cold continent, marked by harsh climates, icy landscapes, and peoples accustomed to endurance.<br>
-                    🍃 Molton — the intermediate continent, balancing cold and heat, with natural and cultural diversity.<br>
+                    🍃 Molton — the intermediate continent, with balance between cold and heat, natural and cultural diversity.<br>
                     🔥 Clifton — the hot continent, full of intense heat, vibrant life, and traditions shaped by the sun.
                 </p>
             </div>
@@ -942,7 +1155,7 @@
 
         <!-- The Minds Behind -->
         <section id="creators" class="section">
-            <h2 class="section-title">The mind behind</h2>
+            <h2 class="section-title">The Mind Behind</h2>
             <div class="creators-grid">
                 <!-- Wahi -->
                 <div class="creator-card">
@@ -952,14 +1165,14 @@
                     <h3 class="creator-name">Eduarda Victoria</h3>
                     <p class="creator-role">The Creator</p>
                     <p class="creator-desc">
-                        Better known by the pseudonyms Wahipogo or Wahi, she is the creative mind behind the Profane Bonds universe. In addition to conceptualizing the work, she acts as screenwriter, creative director, and project manager. She is also a programmer, responsible for developing and maintaining the official website.
+                        Better known by the pseudonyms Wahipogo or Wahi, she is the creative mind behind the Profane Bonds universe. In addition to conceiving the work, she acts as a screenwriter, creative director, and project manager. She is also a programmer, responsible for the development and maintenance of the work's official website.
                     </p>
                     <!-- Additional buttons -->
                     <div class="creator-buttons">
-                        <a href="https://lacosprofanos.com.br/wahi/en" class="nav-btn">
+                        <a href="https://lacosprofanos.com.br/wahi" class="nav-btn">
                             <i class="fas fa-share-alt"></i> Social Media
                         </a>
-                        <a href="https://github.com/wahipoga/portfolio" class="nav-btn">
+                        <a href="https://github.com/wahipoga/portfolio" target="_blank" class="nav-btn">
                             <i class="fas fa-folder-open"></i> Portfolio
                         </a>
                     </div>
@@ -978,7 +1191,6 @@
             const dropdownContent = document.getElementById('dropdownContent');
             
             if (languageBtn && dropdownContent) {
-                // Open/close dropdown when clicking the button
                 languageBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     if (dropdownContent.style.display === 'block') {
@@ -988,14 +1200,12 @@
                     }
                 });
                 
-                // Close dropdown when clicking outside
                 document.addEventListener('click', function(e) {
                     if (!e.target.closest('.language-dropdown')) {
                         dropdownContent.style.display = 'none';
                     }
                 });
                 
-                // Prevent dropdown from closing when clicking inside it
                 dropdownContent.addEventListener('click', function(e) {
                     e.stopPropagation();
                 });
@@ -1018,7 +1228,6 @@
                     console.log('Menu active?', navMenu.classList.contains('active'));
                 });
                 
-                // Close menu when clicking links (mobile)
                 document.querySelectorAll('.nav-item a').forEach(link => {
                     link.addEventListener('click', function(e) {
                         if (window.innerWidth <= 768) {
@@ -1028,7 +1237,6 @@
                     });
                 });
                 
-                // Close menu when clicking outside (mobile)
                 document.addEventListener('click', function(event) {
                     if (window.innerWidth <= 768 && 
                         navMenu.classList.contains('active') && 
@@ -1040,7 +1248,7 @@
                 });
             }
             
-            // Close menu when resizing screen
+            // Close menu when resizing the screen
             window.addEventListener('resize', function() {
                 if (window.innerWidth > 768 && navMenu) {
                     hamburger.classList.remove('active');
@@ -1055,15 +1263,14 @@
                 });
             });
             
-            // ===== 4. DETECT AND FIX LINKS TO SAME DOMAIN =====
+            // ===== 4. DETECT AND CORRECT LINKS TO THE SAME DOMAIN =====
             document.querySelectorAll('a').forEach(link => {
                 const href = link.getAttribute('href');
                 const target = link.getAttribute('target');
                 
-                // If link is to the same domain and has target="_blank", remove target
                 if (href && href.includes('lacosprofanos.com.br') && target === '_blank') {
                     link.removeAttribute('target');
-                    console.log('Fixed link to open in same tab:', href);
+                    console.log('Corrected link to open in the same tab:', href);
                 }
             });
         });
